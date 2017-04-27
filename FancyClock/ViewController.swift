@@ -10,6 +10,10 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    
+    var timeFormatter = DateFormatter()
     var dateFormatter = DateFormatter()
     
     override func viewDidLoad() {
@@ -17,16 +21,13 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         print("World")
         
-        dateFormatter.timeStyle = .medium
-        
-        let label = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: view.bounds.width, height: view.bounds.height))
-        label.text = dateFormatter.string(from: Date())
-        label.font = UIFont.systemFont(ofSize: 50.0)
-        label.textAlignment = .center
-        view.addSubview(label)
+        timeFormatter.timeStyle = .medium
+        dateFormatter.dateStyle = .full
         
         Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
-            label.text = self?.dateFormatter.string(from: Date())
+            let currentTime = Date()
+            self?.timeLabel.text = self?.timeFormatter.string(from: currentTime)
+            self?.dateLabel.text = self?.dateFormatter.string(from: currentTime)
         }
     }
 
@@ -35,6 +36,4 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
 }
-

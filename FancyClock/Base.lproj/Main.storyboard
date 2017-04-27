@@ -20,8 +20,45 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hK6-HC-m1p">
+                                <rect key="frame" x="115.5" y="256.5" width="144.5" height="155"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xDQ-j8-c02">
+                                        <rect key="frame" x="16" y="16" width="112.5" height="60"/>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="50"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QD1-JA-qGz">
+                                        <rect key="frame" x="16" y="110" width="112.5" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="xDQ-j8-c02" secondAttribute="trailing" constant="16" id="4Bu-03-kSo"/>
+                                    <constraint firstItem="QD1-JA-qGz" firstAttribute="top" secondItem="xDQ-j8-c02" secondAttribute="bottom" constant="34" id="8QH-NO-YeV"/>
+                                    <constraint firstAttribute="bottom" secondItem="QD1-JA-qGz" secondAttribute="bottom" constant="16" id="Hvp-CE-j8f"/>
+                                    <constraint firstItem="xDQ-j8-c02" firstAttribute="top" secondItem="hK6-HC-m1p" secondAttribute="top" constant="16" id="Te8-Zb-elx"/>
+                                    <constraint firstItem="xDQ-j8-c02" firstAttribute="leading" secondItem="hK6-HC-m1p" secondAttribute="leading" constant="16" id="tvU-JR-MC0"/>
+                                    <constraint firstAttribute="trailing" secondItem="QD1-JA-qGz" secondAttribute="trailing" constant="16" id="uFX-E2-f2X"/>
+                                    <constraint firstItem="QD1-JA-qGz" firstAttribute="leading" secondItem="hK6-HC-m1p" secondAttribute="leading" constant="16" id="yfG-di-fBe"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="hK6-HC-m1p" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="05h-2k-din"/>
+                            <constraint firstItem="hK6-HC-m1p" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3bo-XO-KKh"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dateLabel" destination="QD1-JA-qGz" id="Ft6-Uh-nFA"/>
+                        <outlet property="timeLabel" destination="xDQ-j8-c02" id="zUw-Dj-r9D"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
