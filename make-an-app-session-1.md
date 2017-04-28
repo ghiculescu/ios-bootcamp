@@ -246,7 +246,7 @@ DateFormatters are created with the default `Locale` and `Timezone` based on the
 Let's format a date! See these links for usage and display types:
 
 [https://developer.apple.com/reference/foundation/dateformatter](https://developer.apple.com/reference/foundation/dateformatter)
-[https://developer.apple.com/reference/foundation/dateformatter.style](https://developer.apple.com/reference/foundation/dateformatter.style) 
+[https://developer.apple.com/reference/foundation/dateformatter.style](https://developer.apple.com/reference/foundation/dateformatter.style)
 
 You'll have to click on one of the cases to see what they actually look like. The online docs are pretty annoying sometimes.
 
@@ -327,6 +327,8 @@ Run it, and we're looking good!
 >For more on automatic reference counting see: https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/AutomaticReferenceCounting.html
 >
 >Note: `Swift.Void` is an artefact of the complex relationship between Swift and Objective-C
+>
+>For more on swift closure syntax see http://goshdarnclosuresyntax.com/
 </p></details>
 
 ## Summary

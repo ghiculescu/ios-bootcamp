@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D0678671EB3AE470014CFF9 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0678661EB3AE470014CFF9 /* TableViewController.swift */; };
+		8D0678691EB3B56E0014CFF9 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0678681EB3B56E0014CFF9 /* TableViewCell.swift */; };
 		8D24F3921EA9EEA400EB478F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D24F3911EA9EEA400EB478F /* AppDelegate.swift */; };
 		8D24F3941EA9EEA400EB478F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D24F3931EA9EEA400EB478F /* ViewController.swift */; };
 		8D24F3971EA9EEA400EB478F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D24F3951EA9EEA400EB478F /* Main.storyboard */; };
@@ -19,6 +21,8 @@
 		2B75904CE886903735615EF9 /* Pods-FancyClock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyClock.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FancyClock/Pods-FancyClock.debug.xcconfig"; sourceTree = "<group>"; };
 		666DA1B3FC44D15001B20A4A /* Pods-FancyClock.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyClock.release.xcconfig"; path = "Pods/Target Support Files/Pods-FancyClock/Pods-FancyClock.release.xcconfig"; sourceTree = "<group>"; };
 		8BBF42F69E3F67F3DCBD4450 /* Pods_FancyClock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FancyClock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D0678661EB3AE470014CFF9 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		8D0678681EB3B56E0014CFF9 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		8D24F38E1EA9EEA400EB478F /* FancyClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FancyClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D24F3911EA9EEA400EB478F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D24F3931EA9EEA400EB478F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +76,8 @@
 			children = (
 				8D24F3911EA9EEA400EB478F /* AppDelegate.swift */,
 				8D24F3931EA9EEA400EB478F /* ViewController.swift */,
+				8D0678661EB3AE470014CFF9 /* TableViewController.swift */,
+				8D0678681EB3B56E0014CFF9 /* TableViewCell.swift */,
 				8D24F3951EA9EEA400EB478F /* Main.storyboard */,
 				8D24F3981EA9EEA400EB478F /* Assets.xcassets */,
 				8D24F39A1EA9EEA400EB478F /* LaunchScreen.storyboard */,
@@ -213,6 +219,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D24F3941EA9EEA400EB478F /* ViewController.swift in Sources */,
+				8D0678691EB3B56E0014CFF9 /* TableViewCell.swift in Sources */,
+				8D0678671EB3AE470014CFF9 /* TableViewController.swift in Sources */,
 				8D24F3921EA9EEA400EB478F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -381,6 +389,7 @@
 				8D24F3A21EA9EEA400EB478F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
