@@ -161,12 +161,12 @@ view.addSubview(label)
 
 You should see this:
 
-![Hello world formatted](https://github.com/redeyeapps/ios-bootcamp/raw/master/images/make-an-app-session-1/hello-world-formatted.png)
+<img src="https://github.com/redeyeapps/ios-bootcamp/raw/master/images/make-an-app-session-1/hello-world-formatted.png" width="360">
 
 Minimalist design and overuse of emoji on a shiny (simulated) device? We're proper iOS developers now.
 
 > SWIFT IN ACTION
-
+>
 > A few things about swift shown above:
 > 1. `let` declares a constant. It looks like we're altering the constant, but since the label is a _class_ -- a reference type, `let` is actually declaring that the reference is constant. Swift also has value types (struct and enum). When these types are declared as constant, they may not be mutated at all. Basic types like String, Int and Bool are defined as value types (see the definition of String and Bool here: https://github.com/apple/swift/blob/master/stdlib/public/core/String.swift, https://github.com/apple/swift/blob/master/stdlib/public/core/Bool.swift). These files are pretty impenetrable (that's why Int's isn't shown) so everyone uses The Swift Programming Language instead. (See https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language)
 > 2. `UIFont.systemFont...` calls a static method on UIFont (https://developer.apple.com/reference/uikit/uifont)
@@ -263,20 +263,20 @@ class ViewController: UIViewController {
 Run it, and we're looking good!
 
 > CLOSURES IN-DEPTH
-The method signature for the timer looks like this:
-```swift
-open class func scheduledTimer(withTimeInterval interval: TimeInterval, repeats: Bool, block: @escaping (Timer) -> Swift.Void) -> Timer
-```
-The closure taken buy this function is the final argument. When using the function, the brackets can be put before the second to last parameter and statement can look more native. It's entirely syntactic sugar.
-
+>The method signature for the timer looks like this:
+>```swift
+>open class func scheduledTimer(withTimeInterval interval: TimeInterval, repeats: Bool, block: @escaping (Timer) -> Swift.Void) -> Timer
+>```
+>The closure taken buy this function is the final argument. When using the function, the brackets can be put before the second to last parameter and statement can look more native. It's entirely syntactic sugar.
+>
 > The important bit is the `@escaping`. It means that what is passed into the function will be stored and executed later. This is in contrast to a non-escaping closure (where `@escaping` is omitted), where the content of the closure is executed before the function executes. Using an instance variable in a closure causes a compiler error where self has to be referenced. This is because to access self, self must be captured. When and object references a closure (the child) and the closure references self (the parent) a reference cycle has been declared and the parent object's memory will be leaked. This is all to do with how swift does memory management. It uses Automatic Reference Counting so manual memory management isn't required, but the overhead of a garbage collector isn't required either. The solution the reference cycle is to hint that the compiler should capture self weakly:
-```swift
-Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] timer in
-    self?. ...
-}
-```
-For more on automatic reference counting see: https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/AutomaticReferenceCounting.html
-
+>```swift
+>Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] timer in
+>    self?. ...
+>}
+>```
+>For more on automatic reference counting see: https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/AutomaticReferenceCounting.html
+>
 > Note: `Swift.Void` is an artefact of the complex relationship between Swift and Objective-C
 
 ## Summary
@@ -297,7 +297,7 @@ Add two Label objects (UILabels) by dragging them out of the Object Library and 
 
 Position the views so that one view is higher than the other. It should look something like this:
 
-![Label placement](https://github.com/redeyeapps/ios-bootcamp/raw/master/images/make-an-app-session-1/label-placement.png)
+<img src="https://github.com/redeyeapps/ios-bootcamp/raw/master/images/make-an-app-session-1/label-placement.png" width="360">
 
 ## Autolayout
 
@@ -433,9 +433,9 @@ Let's style the labels we had before. Click the slider icon in the top half of t
 
 Now add a dateFormatter with a date style to update the dateLabel. Boom! Time and date in both orientations.
 
-![Time and date portrait](https://github.com/redeyeapps/ios-bootcamp/raw/master/images/make-an-app-session-1/time-and-date-portrait.png)
+<img src="https://github.com/redeyeapps/ios-bootcamp/raw/master/images/make-an-app-session-1/time-and-date-portrait.png" width="360">
 
-![Time and date landscape](https://github.com/redeyeapps/ios-bootcamp/raw/master/images/make-an-app-session-1/time-and-date-landscape.png)
+<img src="https://github.com/redeyeapps/ios-bootcamp/raw/master/images/make-an-app-session-1/time-and-date-landscape.png" width="360">
 
 ## Summary
 
