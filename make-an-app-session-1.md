@@ -12,9 +12,16 @@ API Uses:
 
 # 1.1 Hello world (Getting started)
 
-Let's get started!
+In this section we're going to:
+
+* Create an Xcode Project
+* Understand the Xcode interface
+* Check out some Swift
+* Understand how Swift came about
 
 ## 1.1.1 Creating a new Xcode Project
+
+![Create a new project in Xcode](Screenshots/1-1-create-xcode-project.gif)
 
 Click **"Create a new Xcode Project"**. We'll make a **"Single View Application"**. (We'll add more views later)
 
@@ -33,9 +40,9 @@ Organisation Name: iOS Bootcamp
 Organisation Identifier: co.redeye.bootcamp
 Language: Swift
 Devices: Universal
-[x] Use Core Data
-[x] Include Unit Tests
-[x] Include UI Tests
+[ ] Use Core Data
+[ ] Include Unit Tests
+[ ] Include UI Tests
 ```
 
 Hit next, select a location to save it and specify if you want to Git (version control) - it's up to you, but it will allows us to make "Checkpoints" during the day in case we want to rollback to a previous version.
@@ -52,7 +59,7 @@ Xcode overview: 4 areas: Editor, Navigator, Debug and Utilities. You can toggle 
 
 Like the screenshot above, your Xcode app should now be running with the debugger connect. If any errors occur in the build, you can find them by looking in the Error Tab of the Navigator.
 
-## 1.1.3 What is all of this code that I've got already?
+## 1.1.3 What is all of this code?
 
 Hit **⌘+1** to go to the **Project Navigator** and click on ViewController.swift. This is an empty **UIViewController** subclass, and your first look at Swift code!
 
@@ -66,36 +73,66 @@ Hit **⌘+1** to go to the **Project Navigator** and click on ViewController.swi
 > Later further reading on the philosophy of the language: https://swift.org/about/, https://swift.org/community
 </p></details>
 
-What we're seeing here is a class, one of swift's fundamental types, that inherits from UIViewController. (Swift also has Structs, Enums, and Closures. We'll see these guys layer.) The ViewController has two method stubs.
+What we're seeing here is a class, one of Swift's fundamental types, that inherits from `UIViewController` and has two method stubs. Swift also has Structs, Enums, and Closures - we'll see these guys later!
 
-Hold down cmd and click on `UIViewController` in the source code.
+Hold down **Command(⌘)** and click on `UIViewController` in the source code, which will take you to the UIViewController header file! As you can see, there's a lot going on here. 
 
-You're now in the UIViewController header file! As you can see, there's a lot going on here. `UIViewController` handles _view lifecycle_ callbacks -- when a view controller's view will or did load / appear / disappear (`viewDidLoad()`), handles memory warnings (`didReceiveMemoryWarning()`), and coordinates navigation. Notice the `view` property. We'll come back that later.
+`UIViewController` handles **view lifecycle** callbacks such as:
 
-Weirdly there's no swift function bodies in here. That's because all apple's frameworks are still written in Objective-C and swift plays nicely with them.
+* when a view controller's view **will** or **did** load / appear / disappear (`viewDidLoad()`)
+* handles memory warnings (`didReceiveMemoryWarning()`)
+* coordinates navigation
+
+Notice the `view` property. We'll come back that later.
+
+Weirdly there's no Swift function bodies in here. That's because all of Apple's core frameworks for iOS are still written in Objective-C but Swift plays nicely with them.
 
 <details>
 <summary><em>HISTORY LESSON</em></summary><p>
 
->Objective-C was initially developed at NeXT for their NeXTSTEP operating system. NeXT was acquired by apple and NeXTSTEP became OSX, which has morphed into macOS, iOS, tvOS and watchOS. Objective-C is quite a dated language, and the Swift project is an attempt to bring updated practise into the language. To support swift's development, __swift has the capabilities to interact with every part of the objective-c runtime__. Swift indeed developed very quickly and three years later, swift is approaching Application Binary Interface (ABI) stability, which means that large frameworks can be developed without having to be maintained during every swift update (🎉), and UIKit can finally benefit from Swift's shiny new language features.
+>Objective-C was initially developed at NeXT for their NeXTSTEP operating system. NeXT was acquired by apple and NeXTSTEP became OSX, which has morphed into macOS, iOS, tvOS and watchOS. Objective-C is quite a dated language, and the Swift project is an attempt to bring updated practise into the language. To support Swift's development, __Swift has the capabilities to interact with every part of the Objective-C runtime__. Swift indeed developed very quickly and three years later, Swift is approaching Application Binary Interface (ABI) stability, which means that large frameworks can be developed without having to be maintained during every Swift update (🎉), and UIKit can finally benefit from Swift's shiny new language features.
 >
 >Later recommended reading: https://swift.org/contributing/, https://apple.github.io/swift-evolution/
 </p></details>
 
-Hit `cmd-shift-o` and type `AD.s`. This should bring up AppDelegate.swift using the 'Open Quickly' menu.
+Hit `Command(⌘)+Shift+o` to open Xcode's 'Open Quickly' menu and search for `AppDelegate.swift`. **Protip:** You will be able to find **A**pp**D**elegate.**s**wift by simply typing `AD.s`
 
-This is the entry point to the app. `application(\_:didFinishLaunchingWithOptions:)` is where app-wide setup is started. In previous version of iOS this function created the root view controller, but now with storyboards (which are being used in this project), if setup of a view controller is not complete in this method, a view will be created automatically.
+This is the entry point to the app. `application(\_:didFinishLaunchingWithOptions:)` is where app-wide setup starts. In previous versions of iOS, this function would create a 'Root View Controller'. Now with Storyboards (which we're using in this App), a view will be automatically created for us if the setup of a view controller is not completed in this method. Storyboards allow us to create interfaces in Xcode with a drag-and-drop tool but again, we'll cover this later.
 
 Let's chuck a `print("Hello")` in the body of `application(\_:didFinishLaunchingWithOptions:)`, then head back to `ViewController.swift` and add `print("World")` into the body of `viewDidLoad()`.
 
+```
+/// AppDelegate.swift
+
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    // Override point for customization after application launch.
+    print("Hello")
+    return true
+}
+```
+
+```
+/// ViewController.swift
+
+override func viewDidLoad() {
+    super.viewDidLoad()
+    // Do any additional setup after loading the view, typically from a nib.
+    print("World")
+}
+```
+
 Click in the ribbon (the light grey area immediately to the left of the source code) to the left of `print("World")` to add a breakpoint.
 
-Hit Cmd-R again. In the right pane of the debug area (in the middle, at the bottom) you should see
+![Add breakpoint](Screenshots/1-1-add-breakpoint.gif)
+
+Hit **⌘+R** again. In the right pane of the debug area (in the middle, at the bottom) you should see
 ```
 Hello
 ```
 
 Hit the 'Continue program execution' button (third from the left) in the debugger controls above where 'Hello' appeared.
+
+![Continue program execution](Screenshots/1-1-continue-program-execution.gif)
 
 Now the console should read
 ```
