@@ -234,6 +234,7 @@ do {
 
 </p></details>
 <br>
+
 Now we have processed the data out of the dictionary, let's extract the url for the regular image url. In _javascript_ this would be `json.urls.regular`.
 
 The JS in JSON stands for Javascript/JavaScript. The swift version _will_ be gross. You'll probably now wrestle with the compiler for 15 minutes to unpack the JSON.
@@ -254,3 +255,54 @@ guard
 print(resourceAddress)
 ```
 </p></details>
+
+## Cocoapods
+
+CocoaPods is the defacto package manager on iOS. It's a community maintained Ruby gem with over six million downloads.
+
+We will be using it today to take advantage of an image management framework that will make your life significantly easier.
+
+<details>
+<summary><em>MORE COCOAPODS</em></summary><p>
+
+>Most apps on the App Store extensively use CocoaPods. Cocoapods can automatically generate the attribution page. Here's one from VLC.
+>
+><img src="https://raw.githubusercontent.com/redeyeapps/ios-bootcamp/a37f7fde2efaa30e541476b7cb0c08c9b3c5ebdd/images/session-2/vlc-attribution-page.png" width="360">
+>
+>For more info about cocoapods see https://cocoapods.org
+
+</p></details>
+<br>
+
+Cocoapods can be installed `gem` or as a standalone app from https://cocoapods.org/app
+```bash
+sudo gem install cocoapods
+```
+
+Dependancies are managed via a Podfile. These are simple Ruby files that can declare simple or complex dependency graphs.
+For your app you will want your `PodFile` to look like this:
+
+```ruby
+project 'UnplashScreenSaver.xcodeproj'
+
+target 'UnplashScreenSaver' do
+  use_frameworks!
+
+  pod 'Kingfisher'
+end
+```
+
+This file declares a single dependency, Kingfisher. This is the image management framework mentioned earlier.
+
+> For more on Podfiles see https://guides.cocoapods.org/syntax/podfile.html
+
+## Kingfisher
+
+Kingfisher is used to handle the loading and caching of images.
+
+You don't need to know much about Kingfisher, just that it will turn hundreds of lines of code in your app, into just one: `imageView.kf.setImage(resource)`.
+
+>If you want to read more about Kingfisher you can reader about it at https://github.com/onevcat/Kingfisher/wiki/Cheat-Sheet
+
+Image loading itself isn't particularly difficult, however managing an image cache can be.
+Kingfisher also provides the ability to display placeholder images, perform animations, display progress.
