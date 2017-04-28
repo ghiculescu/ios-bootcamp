@@ -141,7 +141,7 @@ Type `label.text = "` then control-command-space to bring up the emoji picker. S
 
 Run the project. You should see this:
 
-![Hello world unformatted](https://github.com/redeyeapps/ios-bootcamp/raw/master/images/make-an-app-session-1/hello-world-unformatted.png)
+<img src="https://github.com/redeyeapps/ios-bootcamp/raw/master/images/make-an-app-session-1/hello-world-unformatted.png" width="360">
 
 It doesn't look quite right. Hit the button that looks like a portrait rectangle on top of a landscape rectangle, to the left of the step-out button in the debug control area.
 
