@@ -335,13 +335,13 @@ We just learned a little about Foundation - the framework that helps with dates,
 
 # 1.4 Auto-tock (Clock with Interface Builder and Autolayout)
 
-In the simulator hit cmd-left_arrow. The position for the time is wrong. Let's hit the view debugger view again.
+In the simulator hit **⌘+Left Arrow(←)**. The position for the time is wrong. Let's hit the view debugger view again.
 
 The window and view controller's view have been updated, but the label's location hasn't been updated. We could hook into view update locations and update the location programmatically, but right now, we'll look into Autolayout, UIKit's layout engine using Storyboards in Interface Builder.
 
-Go to Main.storyboard. The white screen you can see is the ViewController being initialised automatically for us in the AppDelegate, and in the ViewController.
+Go to **Main.storyboard**. The white screen you can see is the ViewController being initialised automatically for us in the AppDelegate, and in the ViewController.
 
-We're going to re-create the clock screen we made programatically, and introduce the date underneath to show where Autolayout really shines: text in more complex view hierarchies.
+We're going to re-create the clock screen we made programatically and introduce the date underneath to show where Autolayout really shines: text in more complex view hierarchies.
 
 Add two Label objects (UILabels) by dragging them out of the Object Library and onto the ViewController. The Object Library should be visible in the bottom half of the Utilities pane. If it's not visible, click on the home button icon in the separator between the top and bottom halves of the Utilities pane.
 
@@ -355,23 +355,24 @@ Autolayout is Apple's system for laying out interface components. It uses a syst
 
 Constraints can be made between edges or centers of views. These include alignment and spacings for example. Also, constraints can be enabled or disabled or set at a priority level to enable degradation.
 
-Additionally, some views have an 'intrinsic content size'. This means that the size of the view _can be_ determined by the contents of the view. Constraints may alter this, but this can also be used to automatically set the size of a view.
+Additionally, some views have an '**intrinsic content size**'. This means that the size of the view _can be_ determined by the contents of the view. Constraints may alter this, but this can also be used to automatically set the size of a view.
 
-Select the two labels and go to Editor > Embed in > View. This will add a view and put the labels as subviews of the view. This is most clear in the document outline on the left of interface builder.
+Select the two labels and go to **Editor > Embed in > View**. This will add a view and put the labels as subviews of the view. This is most clear in the document outline on the left of interface builder.
 
 Now to add the constraints. You will notice the constraints are red to begin with. This means that there aren't enough constraints to define the layout. After step 4 below, the constraints will go blue.
+
 1. Select the top label and hit the add new constraints button (a square on a line thing) to the right of the alignment button in the bottom bar of the interface builder area. Add constraints with constants of 16 to the left, top and right. The constraint icons near these constants will go red when the constraints will be selected. Click 'Add 3 constraints' to add the constraints.
 2. Do the same with the bottom label with the left, _bottom_ and right.
 3. Hold control and drag with the left mouse button between the two labels and release and select 'vertical spacing'. This will add a constraint between the labels with a constant defined by the existing distance between the labels.
 4. Select the view wrapping the labels using the outline or by clicking near the labels and click the alignment button. Check 'Horizontally in Container' and 'Vertically in Container' and click 'Add 2 constraints'
 
-The labels should now be aligned with eachother, as their position has been defined by the constraints, and be centered in the enclosing container. Notice that the size of the view enclosing the labels is defined by the size of the labels, but we haven't explicitly defined the size of the labels.
+The labels should now be aligned with each other, as their position has been defined by the constraints, and be centered in the enclosing container. Notice that the size of the view enclosing the labels is defined by the size of the labels, but we haven't explicitly defined the size of the labels.
 
 > Autolayout is a very complex, powerful tool, and we've barely scratched the surface. Here's a good starting point to learn more https://developer.apple.com/library/content/documentation/UserExperience/Conceptual/AutolayoutPG/
 
 ## Linking interface builder to our code
 
-Right now our views are static. Let's make them dynamic.
+Right now our views are static. Let's make them dynamic!
 
 iOS uses `@IBOutlet` to declare that a view is related to a view existing in a storyboard. Let's declare properties for our views. Add the following before `dateFormatter` in `ViewController.swift`:
 
@@ -383,12 +384,14 @@ iOS uses `@IBOutlet` to declare that a view is related to a view existing in a s
 ### BANG BANG! (A long aside on optionals, tutorial continued afterwards)
 
 Remember how we said before that 'safe' was one of the goals of the Swift language project? A big part of that is if a type can be `nil` it must be declared that way. Swift uses Optionals to represent this. Optionals wrap a type making two cases: the value doesn't exist, or it does exist and has a given value. They can be written as an `enum` like below:
+
 ```swift
 enum Optional<Type> {
     case none
     case some(let value: Type)
 }
 ```
+
 Usually to use an enum we have to use switch statements (or case statements in other places). The following shows this:
 
 ```swift
@@ -469,7 +472,7 @@ These references can sometimes be a source of some gross bugs. They usually look
 
 Change where we update the `label.text` to refer to `timeLabel.text`. Delete the declaration and anything that refers to the original `label`.
 
-cmd-r to run it, and cmd-left to rotate it. It's good!
+**⌘+R** to run it, and **⌘+Left Arrow(←)** to rotate it. It's good!
 
 ## Using interface builder to style components
 
