@@ -54,13 +54,17 @@ Click on ViewController.swift
 
 This is an empty UIViewController subclass, and your first look at swift code!
 
-> THE SWIFT PROJECT
->
-> Swift is a language designed to be "...a general-purpose programming language built using a modern approach to safety, performance, and software design patterns." Swift is a compiled language, and the project uses the LLVM compiler to produce machine-code so theoretically, binaries written in Swift can be run on embedded systems all the way up to server-side infrastructure.
->
-> The project also includes development on the LLVM compiler, package manager, and the creation of core libraries to support swift on platforms not managed by Apple, including server-focussed capabilities.
->
-> Later further reading on the philosophy of the language: https://swift.org/about/, https://swift.org/community
+<details>
+<summary>
+THE SWIFT PROJECT
+
+Swift is a language designed to be "...a general-purpose programming language built using a modern approach to safety, performance, and software design patterns." Swift is a compiled language, and the project uses the LLVM compiler to produce machine-code so theoretically, binaries written in Swift can be run on embedded systems all the way up to server-side infrastructure.
+
+The project also includes development on the LLVM compiler, package manager, and the creation of core libraries to support swift on platforms not managed by Apple, including server-focussed capabilities.
+
+Later further reading on the philosophy of the language: https://swift.org/about/, https://swift.org/community
+</summary>
+</details>
 
 What we're seeing here is a class, one of swift's fundamental types, that inherits from UIViewController. (Swift also has Structs, Enums, and Closures. We'll see these guys layer.) The ViewController has two method stubs.
 
@@ -70,13 +74,18 @@ You're now in the UIViewController header file! As you can see, there's a lot go
 
 Weirdly there's no swift function bodies in here. That's because all apple's frameworks are still written in Objective-C and swift plays nicely with them.
 
-> HISTORY LESSON
->
-> Objective-C was initially developed at NeXT for their NeXTSTEP operating system. NeXT was acquired by apple and NeXTSTEP became OSX, which has morphed into macOS, iOS, tvOS and watchOS. Objective-C is quite a dated language, and the Swift project is an attempt to bring updated practise into the language. To support swift's development, __swift has the capabilities to interact with every part of the objective-c runtime__. Swift indeed developed very quickly and three years later, swift is approaching Application Binary Interface (ABI) stability, which means that large frameworks can be developed without having to be maintained during every swift update (🎉), and UIKit can finally benefit from Swift's shiny new language features.
->
-> Later recommended reading: https://swift.org/contributing/, https://apple.github.io/swift-evolution/
+<details>
+<summary>
+HISTORY LESSON
 
-Hit cmd-shift-o and type 'AD.s'. This should bring up AppDelegate.swift using the 'Open Quickly' menu.
+Objective-C was initially developed at NeXT for their NeXTSTEP operating system. NeXT was acquired by apple and NeXTSTEP became OSX, which has morphed into macOS, iOS, tvOS and watchOS. Objective-C is quite a dated language, and the Swift project is an attempt to bring updated practise into the language. To support swift's development, __swift has the capabilities to interact with every part of the objective-c runtime__. Swift indeed developed very quickly and three years later, swift is approaching Application Binary Interface (ABI) stability, which means that large frameworks can be developed without having to be maintained during every swift update (🎉), and UIKit can finally benefit from Swift's shiny new language features.
+
+Later recommended reading: https://swift.org/contributing/, https://apple.github.io/swift-evolution/
+</summary>
+</details>
+
+
+Hit `cmd-shift-o` and type 'AD.s'. This should bring up AppDelegate.swift using the 'Open Quickly' menu.
 
 This is the entry point to the app. `application(\_:didFinishLaunchingWithOptions:)` is where app-wide setup is started. In previous version of iOS this function created the root view controller, but now with storyboards (which are being used in this project), if setup of a view controller is not complete in this method, a view will be created automatically.
 
@@ -167,12 +176,16 @@ You should see this:
 
 Minimalist design and overuse of emoji on a shiny (simulated) device? We're proper iOS developers now.
 
-> SWIFT IN ACTION
->
-> A few things about swift shown above:
-> 1. `let` declares a constant. It looks like we're altering the constant, but since the label is a _class_ -- a reference type, `let` is actually declaring that the reference is constant. Swift also has value types (struct and enum). When these types are declared as constant, they may not be mutated at all. Basic types like String, Int and Bool are defined as value types (see the definition of String and Bool here: https://github.com/apple/swift/blob/master/stdlib/public/core/String.swift, https://github.com/apple/swift/blob/master/stdlib/public/core/Bool.swift). These files are pretty impenetrable (that's why Int's isn't shown) so everyone uses The Swift Programming Language instead. (See https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language)
-> 2. `UIFont.systemFont...` calls a static method on UIFont (https://developer.apple.com/reference/uikit/uifont)
-> 3. `.center` is using type inference to select a member of an enumeration. The type of the property is NSTextAlignment so it's shorthand for `NSTextAlignment.center`
+<details>
+<summary>
+SWIFT IN ACTION
+
+A few things about swift shown above:
+1. `let` declares a constant. It looks like we're altering the constant, but since the label is a _class_ -- a reference type, `let` is actually declaring that the reference is constant. Swift also has value types (struct and enum). When these types are declared as constant, they may not be mutated at all. Basic types like String, Int and Bool are defined as value types (see the definition of String and Bool here: https://github.com/apple/swift/blob/master/stdlib/public/core/String.swift, https://github.com/apple/swift/blob/master/stdlib/public/core/Bool.swift). These files are pretty impenetrable (that's why Int's isn't shown) so everyone uses The Swift Programming Language instead. (See https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language)
+2. `UIFont.systemFont...` calls a static method on UIFont (https://developer.apple.com/reference/uikit/uifont)
+3. `.center` is using type inference to select a member of an enumeration. The type of the property is NSTextAlignment so it's shorthand for `NSTextAlignment.center`
+</summary>
+</details>
 
 ## Summary
 In this section, we learned about views, coordinates and windows on iOS. We used a label to display emoji directly from the source code, adjusted the font and the alignment. We also used the view debugger.
@@ -264,22 +277,26 @@ class ViewController: UIViewController {
 
 Run it, and we're looking good!
 
-> CLOSURES IN-DEPTH
->The method signature for the timer looks like this:
->```swift
->open class func scheduledTimer(withTimeInterval interval: TimeInterval, repeats: Bool, block: @escaping (Timer) -> Swift.Void) -> Timer
->```
->The closure taken buy this function is the final argument. When using the function, the brackets can be put before the second to last parameter and statement can look more native. It's entirely syntactic sugar.
->
-> The important bit is the `@escaping`. It means that what is passed into the function will be stored and executed later. This is in contrast to a non-escaping closure (where `@escaping` is omitted), where the content of the closure is executed before the function executes. Using an instance variable in a closure causes a compiler error where self has to be referenced. This is because to access self, self must be captured. When and object references a closure (the child) and the closure references self (the parent) a reference cycle has been declared and the parent object's memory will be leaked. This is all to do with how swift does memory management. It uses Automatic Reference Counting so manual memory management isn't required, but the overhead of a garbage collector isn't required either. The solution the reference cycle is to hint that the compiler should capture self weakly:
->```swift
->Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] timer in
->    self?. ...
->}
->```
->For more on automatic reference counting see: https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/AutomaticReferenceCounting.html
->
-> Note: `Swift.Void` is an artefact of the complex relationship between Swift and Objective-C
+<details>
+<summary>
+CLOSURES IN-DEPTH
+The method signature for the timer looks like this:
+```swift
+open class func scheduledTimer(withTimeInterval interval: TimeInterval, repeats: Bool, block: @escaping (Timer) - Swift.Void) - Timer
+```
+The closure taken buy this function is the final argument. When using the function, the brackets can be put before the second to last parameter and statement can look more native. It's entirely syntactic sugar.
+
+The important bit is the `@escaping`. It means that what is passed into the function will be stored and executed later. This is in contrast to a non-escaping closure (where `@escaping` is omitted), where the content of the closure is executed before the function executes. Using an instance variable in a closure causes a compiler error where self has to be referenced. This is because to access self, self must be captured. When and object references a closure (the child) and the closure references self (the parent) a reference cycle has been declared and the parent object's memory will be leaked. This is all to do with how swift does memory management. It uses Automatic Reference Counting so manual memory management isn't required, but the overhead of a garbage collector isn't required either. The solution the reference cycle is to hint that the compiler should capture self weakly:
+```swift
+Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] timer in
+    self?. ...
+}
+```
+For more on automatic reference counting see: https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/AutomaticReferenceCounting.html
+
+Note: `Swift.Void` is an artefact of the complex relationship between Swift and Objective-C
+</summary>
+</details>
 
 ## Summary
 
