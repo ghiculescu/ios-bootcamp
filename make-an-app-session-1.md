@@ -141,7 +141,7 @@ Type `label.text = "` then control-command-space to bring up the emoji picker. S
 
 Run the project. You should see this:
 
-![Hello world unformatted](https://github.com/redeyeapps/ios-bootcamp/images/hello-world-unformatted.png)
+![Hello world unformatted](https://github.com/redeyeapps/ios-bootcamp/images/make-an-app-session-1/hello-world-unformatted.png)
 
 It doesn't look quite right. Hit the button that looks like a portrait rectangle on top of a landscape rectangle, to the left of the step-out button in the debug control area.
 
@@ -161,7 +161,7 @@ view.addSubview(label)
 
 You should see this:
 
-![Hello world formatted](https://github.com/redeyeapps/ios-bootcamp/images/hello-world-formatted.png)
+![Hello world formatted](https://github.com/redeyeapps/ios-bootcamp/images/make-an-app-session-1/hello-world-formatted.png)
 
 Minimalist design and overuse of emoji on a shiny (simulated) device? We're proper iOS developers now.
 
@@ -297,7 +297,7 @@ Add two Label objects (UILabels) by dragging them out of the Object Library and 
 
 Position the views so that one view is higher than the other. It should look something like this:
 
-![Label placement](https://github.com/redeyeapps/ios-bootcamp/images/label-placement.png)
+![Label placement](https://github.com/redeyeapps/ios-bootcamp/images/make-an-app-session-1/label-placement.png)
 
 ## Autolayout
 
@@ -433,9 +433,9 @@ Let's style the labels we had before. Click the slider icon in the top half of t
 
 Now add a dateFormatter with a date style to update the dateLabel. Boom! Time and date in both orientations.
 
-![Time and date portrait](https://github.com/redeyeapps/ios-bootcamp/images/time-and-date-portrait.png)
+![Time and date portrait](https://github.com/redeyeapps/ios-bootcamp/images/make-an-app-session-1/time-and-date-portrait.png)
 
-![Time and date landscape](https://github.com/redeyeapps/ios-bootcamp/images/time-and-date-landscape.png)
+![Time and date landscape](https://github.com/redeyeapps/ios-bootcamp/images/make-an-app-session-1/time-and-date-landscape.png)
 
 ## Summary
 
