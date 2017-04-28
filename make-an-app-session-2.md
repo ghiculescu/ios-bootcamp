@@ -1,5 +1,5 @@
 
-# Session 2
+# SESSION 2
 
 # 2.1 Making things interesting (Networking)
 
