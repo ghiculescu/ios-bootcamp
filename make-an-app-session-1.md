@@ -24,12 +24,14 @@ Organisation Name: iOS Bootcamp
 Organisation Identifier: co.redeye.bootcamp
 Language: Swift
 Devices: Universal
+[x] Use Core Data
+[x] Include Unit Tests
+[x] Include UI Tests
 ```
 
 Hit next, select a location to save it and specify if you want to (or don't want to use git). We've got 'checkpoints' on git so you'll use it in one way or another today :)
 
-Hit cmd-r or click the 'Run' button (Play button in the top right corner)
-(See screenshot)
+Hit cmd-r or click the 'Run' button (Play button in the top left corner)
 
 The simulator should launch and you'll see a white screen (an empty app).
 
@@ -307,7 +309,7 @@ Constraints can be made between edges or centers of views. These include alignme
 
 Additionally, some views have an 'intrinsic content size'. This means that the size of the view _can be_ determined by the contents of the view. Constraints may alter this, but this can also be used to automatically set the size of a view.
 
-Select the two labels and go to Editor > Embed in > View. This will add a view and put the labels as subviews of the view. This is most clear in the document outline on the right of interface builder.
+Select the two labels and go to Editor > Embed in > View. This will add a view and put the labels as subviews of the view. This is most clear in the document outline on the left of interface builder.
 
 Now to add the constraints. You will notice the constraints are red to begin with. This means that there aren't enough constraints to define the layout. After step 4 below, the constraints will go blue.
 1. Select the top label and hit the add new constraints button (a square on a line thing) to the right of the alignment button in the bottom bar of the interface builder area. Add constraints with constants of 16 to the left, top and right. The constraint icons near these constants will go red when the constraints will be selected. Click 'Add 3 constraints' to add the constraints.
