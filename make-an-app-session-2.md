@@ -7,7 +7,7 @@ We could teach you view programming, or how to save things locally, but these ar
 
 Instead, let's look at how networking works on iOS.
 
-## iOS Networking Basics
+## 2.1.1 iOS Networking Basics
 
 Networking is a huge topic. There are heaps of failure modes, and complexities - particularly because iOS devices are often using the cellular network.
 
@@ -31,7 +31,7 @@ Headers can be added using `.addValue(_:forHTTPHeaderField:)` on a `URLRequest` 
 
 > See the URLSession documentation for more https://developer.apple.com/reference/foundation/urlsession, and  https://developer.apple.com/library/content/documentation/NetworkingInternetWeb/Conceptual/NetworkingOverview/Introduction/Introduction.html for an overview of networking.
 
-## Networking in practice
+## 2.1.2 Networking in practice
 
 Usually developers will write a small library to wrap their networking code, since it will mostly be shared for all the requests. Nobody wants to add that auth token every time. Keep it DRY people. (https://en.wikipedia.org/wiki/Don%27t_repeat_yourself)
 
@@ -104,7 +104,7 @@ return URLSession.shared.dataTask(with: urlRequest, completionHandler: { data, u
 >```
 </p></details>
 
-## Parsing the JSON
+## 2.1.3 Parsing the JSON
 
 Here's example JSON from `/photos/random`.
 
@@ -256,7 +256,32 @@ print(resourceAddress)
 ```
 </p></details>
 
-## Cocoapods
+## 2.1.4 UIImageView
+
+These are the way we display images on iOS. They're super simple. They have a property `image` which you assign UIKit's version of an image: `UIImage`.
+
+Images themselves pose a bit of a problem on iOS. That because iOS devices are resource constrained so as soon you start dealing with multiple large images (like we are) we have to be smart about our memory usage. This is pretty hard, but the good news is someone else has done it for us!
+
+## 2.1.5 Kingfisher
+
+Kingfisher is a library to help with loading and caching images.
+
+You don't need to know much about Kingfisher, just that it will turn hundreds of lines of code in your app, into just a few:
+
+```swift
+let resource = ImageResource(downloadURL: url)
+imageView.kf.setImage(resource)
+```
+
+These lines fetch the image asynchronously from the specified url and set it as the image of the image view. It also manages caching and animation (the hard bit).
+
+That's a lot of stuff we didn't have write or (theoretically) test!
+
+The easiest way to manage other's people code is to use a dependency / package manager.
+
+>Kingfisher also provides the ability to display placeholder images, perform animations and display progress. To read more about Kingfisher see https://github.com/onevcat/Kingfisher/wiki/Cheat-Sheet
+
+## 2.1.6 Cocoapods
 
 CocoaPods is the defacto package manager on iOS. It's a community maintained Ruby gem with over six million downloads.
 
@@ -268,12 +293,12 @@ sudo gem install cocoapods
 ```
 
 Dependancies are managed via a Podfile. These are simple Ruby files that can declare simple or complex dependency graphs.
-For your app you will want your `PodFile` to look like this:
+For your app you will want your `Podfile` to look like this:
 
 ```ruby
-project 'UnplashScreenSaver.xcodeproj'
+project 'FancyClock.xcodeproj'
 
-target 'UnplashScreenSaver' do
+target 'FancyClock' do
   use_frameworks!
 
   pod 'Kingfisher'
@@ -282,8 +307,16 @@ end
 
 This file declares a single dependency, Kingfisher. This is the image management framework mentioned earlier.
 
+Cocoapods works by taking control of your project. (Seriously. Linked libraries and dependencies are an afterthought in Xcode.) It'll generate an `.xcworkspace` file which you should use whenever you are developing a project using cocoapods.
+
+Go to the Cocoapods app, enter the above (if you haven't already) then click install. If you're on the command line run `pod install`.
+
+<img src="https://raw.githubusercontent.com/redeyeapps/ios-bootcamp/master/Screenshots/2-1-cocoapods-install.png">
+
+Close the project (**Command(⌘)+q**) and open `FancyClock.xcworkspace`. You'll use this from now on.
+
 <details>
-<summary><em>COCOAPODS USAGE</em></summary><p>
+<summary><em>ALL THE COCOAPODS</em></summary><p>
 
 >Most apps on the App Store extensively use CocoaPods. Cocoapods can automatically generate the attribution page. Here's one from VLC.
 >
@@ -295,13 +328,17 @@ This file declares a single dependency, Kingfisher. This is the image management
 
 </p></details>
 
-## Kingfisher
+## 2.1.7 Putting it all together
 
-Kingfisher is used to handle the loading and caching of images.
+To use Kingfisher, you'll have to import it into `ViewController.swift`. This done like so:
 
-You don't need to know much about Kingfisher, just that it will turn hundreds of lines of code in your app, into just one: `imageView.kf.setImage(resource)`.
+```swift
+import UIKit
+import Kingfisher
 
->If you want to read more about Kingfisher you can reader about it at https://github.com/onevcat/Kingfisher/wiki/Cheat-Sheet
+class ViewController: UIViewController {
+...
+```
+Then just get the image url and pass it to a UIImageView (add it in Interface Builder like we did with the labels before). Boom!
 
-Image loading itself isn't particularly difficult, however managing an image cache can be.
-Kingfisher also provides the ability to display placeholder images, perform animations, display progress.
+## 2.1.8 UIView Animations
