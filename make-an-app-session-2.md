@@ -262,18 +262,6 @@ CocoaPods is the defacto package manager on iOS. It's a community maintained Rub
 
 We will be using it today to take advantage of an image management framework that will make your life significantly easier.
 
-<details>
-<summary><em>MORE COCOAPODS</em></summary><p>
-
->Most apps on the App Store extensively use CocoaPods. Cocoapods can automatically generate the attribution page. Here's one from VLC.
->
-><img src="https://raw.githubusercontent.com/redeyeapps/ios-bootcamp/a37f7fde2efaa30e541476b7cb0c08c9b3c5ebdd/images/session-2/vlc-attribution-page.png" width="360">
->
->For more info about cocoapods see https://cocoapods.org
-
-</p></details>
-<br>
-
 Cocoapods can be installed `gem` or as a standalone app from https://cocoapods.org/app
 ```bash
 sudo gem install cocoapods
@@ -294,7 +282,18 @@ end
 
 This file declares a single dependency, Kingfisher. This is the image management framework mentioned earlier.
 
-> For more on Podfiles see https://guides.cocoapods.org/syntax/podfile.html
+<details>
+<summary><em>COCOAPODS USAGE</em></summary><p>
+
+>Most apps on the App Store extensively use CocoaPods. Cocoapods can automatically generate the attribution page. Here's one from VLC.
+>
+><img src="https://raw.githubusercontent.com/redeyeapps/ios-bootcamp/a37f7fde2efaa30e541476b7cb0c08c9b3c5ebdd/images/session-2/vlc-attribution-page.png" width="360">
+>
+>For more info about cocoapods see https://cocoapods.org
+>
+>For more on podfiles see https://guides.cocoapods.org/syntax/podfile.html
+
+</p></details>
 
 ## Kingfisher
 
