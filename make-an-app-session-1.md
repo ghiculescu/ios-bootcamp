@@ -12,11 +12,20 @@ API Uses:
 
 # 1.1 Hello world (Getting started)
 
-Let's get started.
+Let's get started!
 
-Click "Create a new Xcode Project". We'll make a "Single View Application". (We'll add more views later)
+## 1.1.1 Creating a new Xcode Project
 
-Use the following for the project details and uncheck "Use Core Data", "Include Unit Tests", and "Include UI Tests".
+Click **"Create a new Xcode Project"**. We'll make a **"Single View Application"**. (We'll add more views later)
+
+Use the following for the project details and uncheck:
+
+* Use Core Data
+* Include Unit Tests
+* Include UI Tests
+
+It will look a little like this:
+ 
 ```
 Product Name: FancyClock
 Team: <Your Name> (Personal Team)
@@ -29,30 +38,23 @@ Devices: Universal
 [x] Include UI Tests
 ```
 
-Hit next, select a location to save it and specify if you want to (or don't want to use git). We've got 'checkpoints' on git so you'll use it in one way or another today :)
+Hit next, select a location to save it and specify if you want to Git (version control) - it's up to you, but it will allows us to make "Checkpoints" during the day in case we want to rollback to a previous version.
 
-Hit cmd-r or click the 'Run' button (Play button in the top left corner)
+Hit **⌘(command) + R** or click the **'Run'** button (Play button in the top left corner)
 
-The simulator should launch and you'll see a white screen (an empty app).
+The simulator should launch and you'll see a white screen (an empty app), let's work out what we're seeing here.
 
-Xcode overview: 4 areas. 3 editor modes.
-Areas:
-1. Editor
-2. Navigator (left)
-3. Debug area (bottom)
-4. Utilities (right)
+## 1.1.2 Understanding the Xcode interface
 
-Toggle these in the top right corner.
+Xcode overview: 4 areas: Editor, Navigator, Debug and Utilities. You can toggle these areas with the icons in the top-right corner.
 
-Since it's now running, debugger is in the bottom. Debug controls are in there.
+![XCode Overview](Screenshots/1-1-xcode-overview.png)
 
-If you have any errors, they are in the error tab in the navigator cmd 4.
+Like the screenshot above, your Xcode app should now be running with the debugger connect. If any errors occur in the build, you can find them by looking in the Error Tab of the Navigator.
 
-Hit cmd-1 to go to the project navigator.
+## 1.1.3 What is all of this code that I've got already?
 
-Click on ViewController.swift
-
-This is an empty UIViewController subclass, and your first look at swift code!
+Hit **⌘+1** to go to the **Project Navigator** and click on ViewController.swift. This is an empty **UIViewController** subclass, and your first look at Swift code!
 
 > THE SWIFT PROJECT
 >
@@ -76,7 +78,7 @@ Weirdly there's no swift function bodies in here. That's because all apple's fra
 >
 > Later recommended reading: https://swift.org/contributing/, https://apple.github.io/swift-evolution/
 
-Hit cmd-shift-o and type 'AD.s'. This should bring up AppDelegate.swift using the 'Open Quickly' menu.
+Hit cmd-shift-o and type `AD.s`. This should bring up AppDelegate.swift using the 'Open Quickly' menu.
 
 This is the entry point to the app. `application(\_:didFinishLaunchingWithOptions:)` is where app-wide setup is started. In previous version of iOS this function created the root view controller, but now with storyboards (which are being used in this project), if setup of a view controller is not complete in this method, a view will be created automatically.
 
