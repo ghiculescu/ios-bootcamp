@@ -339,6 +339,78 @@ import Kingfisher
 class ViewController: UIViewController {
 ...
 ```
-Then just get the image url and pass it to a UIImageView (add it in Interface Builder like we did with the labels before). Boom!
+Then just get the image url and pass it to a UIImageView (add it in Interface Builder like we did with the labels before).
 
-## 2.1.8 UIView Animations
+Boom! Enjoy the programmers high as that beautiful high-res image fades in. Ciao bella!
+
+## Summary
+
+In this section we've covered networking code, JSON parsing, done some more advanced optional usage, added a dependency using Cocoapods and put all these together to display a random image from Unsplash.
+
+# 2.2 Keeping it fresh (Downloading images in the background)
+
+The image is nice, but we don't want to have to re-run the app to get a different image.
+
+There's quite a lag time on the initial image load, so let's load the next image while the previous is still displaying.
+
+## 2.1.1 Loading an image in the background
+
+Once again Kingfisher helps with this. We can use the following to download an image while the current image is loading.
+```swift
+ImageDownloader.default.downloadImage(with: resourceUrl,
+                                      options: [],
+                                      progressBlock: nil)
+{ [weak self] image, _, _, _ in
+    // Do stuff with the new image.
+}
+```
+
+We can just update the image on the `UIImageView` but that wouldn't look great. Let's learn how to animate the change.
+
+## 2.1.2 UIView Animations
+
+UIView comes out of the box with some pretty comprehensive support for animations. Heaps of a UIView's properties can be animated and animations can have different easings, be chained or reversed, right out of the box. A superview and subview can even have different animations running at the same time (eg: while one is spinning, the other is moving or fading with a different easing).
+
+In it's simpler form (missing the options), the animation API looks like this:
+```swift
+let duration: TimeInterval = 1.0 // TimeInterval is an alias for the Double type.
+UIView.animate(withDuration: duration, animations: {
+    // Make some changes that should be animated over duration
+}, completion: { didFinish in
+    // Do stuff when the animation has finished, including start a new animation.
+    // Did finish is a flag describing if the animation finished (true) or has for some reason been cut short (false).
+})
+```
+
+We can very easily animate the alpha from 1.0 (full opacity) to 0.0 (no opacity), or move the image offscreen (by animating the frame or center) so the image view is hidden when we swap the image out.
+
+Try hiding swapping out the image with animations. Use a second `UIView.animate(withDuration:animations:completion)` call in the completion block of a first animation to undo a change.
+
+Put all this in a function called by a timer and see what you get!
+
+This is one of the fun parts of iOS development so play around with some different effects!
+
+<details>
+<summary><em>ADVANCED ANIMATIONS</em></summary><p>
+
+> The full variant of `UIView.animate` is
+>```swift
+>open class func animate(withDuration duration: TimeInterval, delay: TimeInterval, options: UIViewAnimationOptions = [], animations: @escaping () -> Swift.Void, completion: ((Bool) -> Swift.Void)? = nil)
+>```
+> An alternative is to use a physics based model:
+>```swift
+>open class func animate(withDuration duration: TimeInterval, delay: TimeInterval, usingSpringWithDamping dampingRatio: CGFloat, initialSpringVelocity velocity: CGFloat, options: UIViewAnimationOptions = [], animations: @escaping () -> Swift.Void, completion: ((Bool) -> Swift.Void)? = nil)
+>```
+>
+> The `frame`, `bounds`, `center`, `transform` (2d only), `alpha`, `backgroundColor` and `contentStretch` of a `UIView` can all be animated. If these aren't enough, the `CALayer` (Core-Animation Layer) that backs a `UIView` can be accessed to open even more opportunities (with a more compex API).
+>
+> For more on animations see https://developer.apple.com/library/content/documentation/WindowsViews/Conceptual/ViewPG_iPhoneOS/AnimatingViews/AnimatingViews.html
+
+</p></details>
+<br>
+
+**Final product gif here.**
+
+## Summary
+
+We used a background task to load an image while another was still displaying, then used `UIView.animate` to create a transition.
