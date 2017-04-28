@@ -58,6 +58,7 @@ let string = String(data: data, encoding: .utf8)
 
 <details>
 <summary><em>SOLUTION (SPOILERS)</em></summary><p>
+
 ```swift
 guard let url = URL(string: "insert-endpoint-here/photos/random") else { return }
 var urlRequest = URLRequest(url: url)
