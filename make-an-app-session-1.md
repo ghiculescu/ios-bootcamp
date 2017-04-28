@@ -12,11 +12,20 @@ API Uses:
 
 # 1.1 Hello world (Getting started)
 
-Let's get started.
+Let's get started!
 
-Click "Create a new Xcode Project". We'll make a "Single View Application". (We'll add more views later)
+## 1.1.1 Creating a new Xcode Project
 
-Use the following for the project details and uncheck "Use Core Data", "Include Unit Tests", and "Include UI Tests".
+Click **"Create a new Xcode Project"**. We'll make a **"Single View Application"**. (We'll add more views later)
+
+Use the following for the project details and uncheck:
+
+* Use Core Data
+* Include Unit Tests
+* Include UI Tests
+
+It will look a little like this:
+ 
 ```
 Product Name: FancyClock
 Team: <Your Name> (Personal Team)
@@ -24,41 +33,38 @@ Organisation Name: iOS Bootcamp
 Organisation Identifier: co.redeye.bootcamp
 Language: Swift
 Devices: Universal
+[x] Use Core Data
+[x] Include Unit Tests
+[x] Include UI Tests
 ```
 
-Hit next, select a location to save it and specify if you want to (or don't want to use git). We've got 'checkpoints' on git so you'll use it in one way or another today :)
+Hit next, select a location to save it and specify if you want to Git (version control) - it's up to you, but it will allows us to make "Checkpoints" during the day in case we want to rollback to a previous version.
 
-Hit cmd-r or click the 'Run' button (Play button in the top right corner)
-(See screenshot)
+Hit **⌘(command) + R** or click the **'Run'** button (Play button in the top left corner)
 
-The simulator should launch and you'll see a white screen (an empty app).
+The simulator should launch and you'll see a white screen (an empty app), let's work out what we're seeing here.
 
-Xcode overview: 4 areas. 3 editor modes.
-Areas:
-1. Editor
-2. Navigator (left)
-3. Debug area (bottom)
-4. Utilities (right)
+## 1.1.2 Understanding the Xcode interface
 
-Toggle these in the top right corner.
+Xcode overview: 4 areas: Editor, Navigator, Debug and Utilities. You can toggle these areas with the icons in the top-right corner.
 
-Since it's now running, debugger is in the bottom. Debug controls are in there.
+![XCode Overview](Screenshots/1-1-xcode-overview.png)
 
-If you have any errors, they are in the error tab in the navigator cmd 4.
+Like the screenshot above, your Xcode app should now be running with the debugger connect. If any errors occur in the build, you can find them by looking in the Error Tab of the Navigator.
 
-Hit cmd-1 to go to the project navigator.
+## 1.1.3 What is all of this code that I've got already?
 
-Click on ViewController.swift
+Hit **⌘+1** to go to the **Project Navigator** and click on ViewController.swift. This is an empty **UIViewController** subclass, and your first look at Swift code!
 
-This is an empty UIViewController subclass, and your first look at swift code!
-
-> THE SWIFT PROJECT
+<details>
+<summary><em>THE SWIFT PROJECT</em></summary><p>
 
 > Swift is a language designed to be "...a general-purpose programming language built using a modern approach to safety, performance, and software design patterns." Swift is a compiled language, and the project uses the LLVM compiler to produce machine-code so theoretically, binaries written in Swift can be run on embedded systems all the way up to server-side infrastructure.
-
+>
 > The project also includes development on the LLVM compiler, package manager, and the creation of core libraries to support swift on platforms not managed by Apple, including server-focussed capabilities.
-
+>
 > Later further reading on the philosophy of the language: https://swift.org/about/, https://swift.org/community
+</p></details>
 
 What we're seeing here is a class, one of swift's fundamental types, that inherits from UIViewController. (Swift also has Structs, Enums, and Closures. We'll see these guys layer.) The ViewController has two method stubs.
 
@@ -68,13 +74,15 @@ You're now in the UIViewController header file! As you can see, there's a lot go
 
 Weirdly there's no swift function bodies in here. That's because all apple's frameworks are still written in Objective-C and swift plays nicely with them.
 
-> HISTORY LESSON
+<details>
+<summary><em>HISTORY LESSON</em></summary><p>
 
-> Objective-C was initially developed at NeXT for their NeXTSTEP operating system. NeXT was acquired by apple and NeXTSTEP became OSX, which has morphed into macOS, iOS, tvOS and watchOS. Objective-C is quite a dated language, and the Swift project is an attempt to bring updated practise into the language. To support swift's development, __swift has the capabilities to interact with every part of the objective-c runtime__. Swift indeed developed very quickly and three years later, swift is approaching Application Binary Interface (ABI) stability, which means that large frameworks can be developed without having to be maintained during every swift update (🎉), and UIKit can finally benefit from Swift's shiny new language features.
+>Objective-C was initially developed at NeXT for their NeXTSTEP operating system. NeXT was acquired by apple and NeXTSTEP became OSX, which has morphed into macOS, iOS, tvOS and watchOS. Objective-C is quite a dated language, and the Swift project is an attempt to bring updated practise into the language. To support swift's development, __swift has the capabilities to interact with every part of the objective-c runtime__. Swift indeed developed very quickly and three years later, swift is approaching Application Binary Interface (ABI) stability, which means that large frameworks can be developed without having to be maintained during every swift update (🎉), and UIKit can finally benefit from Swift's shiny new language features.
+>
+>Later recommended reading: https://swift.org/contributing/, https://apple.github.io/swift-evolution/
+</p></details>
 
-> Later recommended reading: https://swift.org/contributing/, https://apple.github.io/swift-evolution/
-
-Hit cmd-shift-o and type 'AD.s'. This should bring up AppDelegate.swift using the 'Open Quickly' menu.
+Hit `cmd-shift-o` and type `AD.s`. This should bring up AppDelegate.swift using the 'Open Quickly' menu.
 
 This is the entry point to the app. `application(\_:didFinishLaunchingWithOptions:)` is where app-wide setup is started. In previous version of iOS this function created the root view controller, but now with storyboards (which are being used in this project), if setup of a view controller is not complete in this method, a view will be created automatically.
 
@@ -141,7 +149,7 @@ Type `label.text = "` then control-command-space to bring up the emoji picker. S
 
 Run the project. You should see this:
 
-![Hello world unformatted](https://github.com/redeyeapps/ios-bootcamp/raw/master/images/make-an-app-session-1/hello-world-unformatted.png)
+<img src="https://github.com/redeyeapps/ios-bootcamp/raw/master/images/make-an-app-session-1/hello-world-unformatted.png" width="360">
 
 It doesn't look quite right. Hit the button that looks like a portrait rectangle on top of a landscape rectangle, to the left of the step-out button in the debug control area.
 
@@ -161,16 +169,18 @@ view.addSubview(label)
 
 You should see this:
 
-![Hello world formatted](https://github.com/redeyeapps/ios-bootcamp/raw/master/images/make-an-app-session-1/hello-world-formatted.png)
+<img src="https://github.com/redeyeapps/ios-bootcamp/raw/master/images/make-an-app-session-1/hello-world-formatted.png" width="360">
 
 Minimalist design and overuse of emoji on a shiny (simulated) device? We're proper iOS developers now.
 
-> SWIFT IN ACTION
+<details>
+<summary><em>SWIFT IN ACTION</em></summary><p>
 
-> A few things about swift shown above:
-> 1. `let` declares a constant. It looks like we're altering the constant, but since the label is a _class_ -- a reference type, `let` is actually declaring that the reference is constant. Swift also has value types (struct and enum). When these types are declared as constant, they may not be mutated at all. Basic types like String, Int and Bool are defined as value types (see the definition of String and Bool here: https://github.com/apple/swift/blob/master/stdlib/public/core/String.swift, https://github.com/apple/swift/blob/master/stdlib/public/core/Bool.swift). These files are pretty impenetrable (that's why Int's isn't shown) so everyone uses The Swift Programming Language instead. (See https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language)
-> 2. `UIFont.systemFont...` calls a static method on UIFont (https://developer.apple.com/reference/uikit/uifont)
-> 3. `.center` is using type inference to select a member of an enumeration. The type of the property is NSTextAlignment so it's shorthand for `NSTextAlignment.center`
+>A few things about swift shown above:
+>1. `let` declares a constant. It looks like we're altering the constant, but since the label is a _class_ -- a reference type, `let` is actually declaring that the reference is constant. Swift also has value types (struct and enum). When these types are declared as constant, they may not be mutated at all. Basic types like String, Int and Bool are defined as value types (see the definition of String and Bool here: https://github.com/apple/swift/blob/master/stdlib/public/core/String.swift, https://github.com/apple/swift/blob/master/stdlib/public/core/Bool.swift). These files are pretty impenetrable (that's why Int's isn't shown) so everyone uses The Swift Programming Language instead. (See https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language)
+>2. `UIFont.systemFont...` calls a static method on UIFont (https://developer.apple.com/reference/uikit/uifont)
+>3. `.center` is using type inference to select a member of an enumeration. The type of the property is NSTextAlignment so it's shorthand for `NSTextAlignment.center`
+</p></details>
 
 ## Summary
 In this section, we learned about views, coordinates and windows on iOS. We used a label to display emoji directly from the source code, adjusted the font and the alignment. We also used the view debugger.
@@ -262,22 +272,25 @@ class ViewController: UIViewController {
 
 Run it, and we're looking good!
 
-> CLOSURES IN-DEPTH
-The method signature for the timer looks like this:
-```swift
-open class func scheduledTimer(withTimeInterval interval: TimeInterval, repeats: Bool, block: @escaping (Timer) -> Swift.Void) -> Timer
-```
-The closure taken buy this function is the final argument. When using the function, the brackets can be put before the second to last parameter and statement can look more native. It's entirely syntactic sugar.
+<details>
+<summary><em>CLOSURES IN-DEPTH</em></summary><p>
 
-> The important bit is the `@escaping`. It means that what is passed into the function will be stored and executed later. This is in contrast to a non-escaping closure (where `@escaping` is omitted), where the content of the closure is executed before the function executes. Using an instance variable in a closure causes a compiler error where self has to be referenced. This is because to access self, self must be captured. When and object references a closure (the child) and the closure references self (the parent) a reference cycle has been declared and the parent object's memory will be leaked. This is all to do with how swift does memory management. It uses Automatic Reference Counting so manual memory management isn't required, but the overhead of a garbage collector isn't required either. The solution the reference cycle is to hint that the compiler should capture self weakly:
-```swift
-Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] timer in
-    self?. ...
-}
-```
-For more on automatic reference counting see: https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/AutomaticReferenceCounting.html
-
-> Note: `Swift.Void` is an artefact of the complex relationship between Swift and Objective-C
+>The method signature for the timer looks like this:
+>```swift
+>open class func scheduledTimer(withTimeInterval interval: TimeInterval, repeats: Bool, block: @escaping (Timer) - Swift.Void) - Timer
+>```
+>The closure taken buy this function is the final argument. When using the function, the brackets can be put before the second to last parameter and statement can look more native. It's entirely syntactic sugar.
+>
+>The important bit is the `@escaping`. It means that what is passed into the function will be stored and executed later. This is in contrast to a non-escaping closure (where `@escaping` is omitted), where the content of the closure is executed before the function executes. Using an instance variable in a closure causes a compiler error where self has to be referenced. This is because to access self, self must be captured. When and object references a closure (the child) and the closure references self (the parent) a reference cycle has been declared and the parent object's memory will be leaked. This is all to do with how swift does memory management. It uses Automatic Reference Counting so manual memory management isn't required, but the overhead of a garbage collector isn't required either. The solution the reference cycle is to hint that the compiler should capture self weakly:
+>```swift
+>Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] timer in
+>    self?. ...
+>}
+>```
+>For more on automatic reference counting see: https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/AutomaticReferenceCounting.html
+>
+>Note: `Swift.Void` is an artefact of the complex relationship between Swift and Objective-C
+</p></details>
 
 ## Summary
 
@@ -297,7 +310,7 @@ Add two Label objects (UILabels) by dragging them out of the Object Library and 
 
 Position the views so that one view is higher than the other. It should look something like this:
 
-![Label placement](https://github.com/redeyeapps/ios-bootcamp/raw/master/images/make-an-app-session-1/label-placement.png)
+<img src="https://github.com/redeyeapps/ios-bootcamp/raw/master/images/make-an-app-session-1/label-placement.png" width="360">
 
 ## Autolayout
 
@@ -307,7 +320,7 @@ Constraints can be made between edges or centers of views. These include alignme
 
 Additionally, some views have an 'intrinsic content size'. This means that the size of the view _can be_ determined by the contents of the view. Constraints may alter this, but this can also be used to automatically set the size of a view.
 
-Select the two labels and go to Editor > Embed in > View. This will add a view and put the labels as subviews of the view. This is most clear in the document outline on the right of interface builder.
+Select the two labels and go to Editor > Embed in > View. This will add a view and put the labels as subviews of the view. This is most clear in the document outline on the left of interface builder.
 
 Now to add the constraints. You will notice the constraints are red to begin with. This means that there aren't enough constraints to define the layout. After step 4 below, the constraints will go blue.
 1. Select the top label and hit the add new constraints button (a square on a line thing) to the right of the alignment button in the bottom bar of the interface builder area. Add constraints with constants of 16 to the left, top and right. The constraint icons near these constants will go red when the constraints will be selected. Click 'Add 3 constraints' to add the constraints.
@@ -433,9 +446,9 @@ Let's style the labels we had before. Click the slider icon in the top half of t
 
 Now add a dateFormatter with a date style to update the dateLabel. Boom! Time and date in both orientations.
 
-![Time and date portrait](https://github.com/redeyeapps/ios-bootcamp/raw/master/images/make-an-app-session-1/time-and-date-portrait.png)
+<img src="https://github.com/redeyeapps/ios-bootcamp/raw/master/images/make-an-app-session-1/time-and-date-portrait.png" width="360">
 
-![Time and date landscape](https://github.com/redeyeapps/ios-bootcamp/raw/master/images/make-an-app-session-1/time-and-date-landscape.png)
+<img src="https://github.com/redeyeapps/ios-bootcamp/raw/master/images/make-an-app-session-1/time-and-date-landscape.png" width="360">
 
 ## Summary
 
