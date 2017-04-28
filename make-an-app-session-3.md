@@ -28,7 +28,7 @@ Try not to spend too much time on this initially, it's something easy to come ba
 
 First, head to `main.storyboard` and drag out a table view controller from the Objects Viewer. We'll make this the storyboard entry point so drag the big arrow from the view controller we were working on previously to the new table view controller. We'll add some navigation between the two later.
 
-Now we have a table view controller in the storyboard, we need to add a UITableViewController subclass to drive it. First, select `ViewController.swift`. Add a new file and select 'Cocoa Touch Class' from the wizard. We'll subclass UITableViewController and since we're using a storyboard, we don't need a xib (pronounced 'zib'). Selecting `ViewController.swift` is the easiest way to make sure the group and save location is set right. We need to do this because the default location of the file now that Cocoapods is in use wouldn't be picked up by the compiler.
+Now we have a table view controller in the storyboard, we need to add a UITableViewController subclass to drive it. First, select `ViewController.swift`. Add a new file and select 'Cocoa Touch Class' from the wizard. We'll subclass UITableViewController and since we're using a storyboard, we don't need a xib (pronounced 'zib'). Selecting `ViewController.swift` is the easiest way to make sure the group and save location is set right. We need to do this because the default location of the file wouldn't be picked up by the compiler now that Cocoapods is in use.
 
 **Needs walkthrough**
 
@@ -131,11 +131,17 @@ We can use this to push to the selected collection into the view controller that
 
 We're using some pretty big photos and we're loading and 'unloading' view controllers. I say 'unloading' because of Swift's memory management model and a very common error.
 
-Talk about closures and references cycles.
+In CLOSURES IN-DEPTH (1.3) we talked a little about how to work with closures and avoid reference cycles. Since our view controllers refer to the images, if the view controller captures itself through a reference cycle, the images will never be released. View controllers in navigation to different items aren't re-used. Make sure to use `[weak self]` to allow the view controllers to be released.
 
 ## Summary
 
+We added a table view, learned how to make custom table view cells, navigate using segues, and be careful about memory management.
 
+# Closing remarks
+
+Hopefully we've given you some tools to get started learning iOS. We've by no means done a comprehensive tutorial, but we've hopefully given enough of a walkthrough so you know a few milestones to help you on your way.
+
+As with all things, the best way to improve your iOS programming skill is to practise. Put something up on the store!
 
 # Example Code
 

@@ -7,23 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8D0678671EB3AE470014CFF9 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0678661EB3AE470014CFF9 /* TableViewController.swift */; };
-		8D0678691EB3B56E0014CFF9 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0678681EB3B56E0014CFF9 /* TableViewCell.swift */; };
 		8D24F3921EA9EEA400EB478F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D24F3911EA9EEA400EB478F /* AppDelegate.swift */; };
 		8D24F3941EA9EEA400EB478F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D24F3931EA9EEA400EB478F /* ViewController.swift */; };
 		8D24F3971EA9EEA400EB478F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D24F3951EA9EEA400EB478F /* Main.storyboard */; };
 		8D24F3991EA9EEA400EB478F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D24F3981EA9EEA400EB478F /* Assets.xcassets */; };
 		8D24F39C1EA9EEA400EB478F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D24F39A1EA9EEA400EB478F /* LaunchScreen.storyboard */; };
-		D28A2C85FD06BFEB89302971 /* Pods_FancyClock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BBF42F69E3F67F3DCBD4450 /* Pods_FancyClock.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2B75904CE886903735615EF9 /* Pods-FancyClock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyClock.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FancyClock/Pods-FancyClock.debug.xcconfig"; sourceTree = "<group>"; };
-		666DA1B3FC44D15001B20A4A /* Pods-FancyClock.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FancyClock.release.xcconfig"; path = "Pods/Target Support Files/Pods-FancyClock/Pods-FancyClock.release.xcconfig"; sourceTree = "<group>"; };
-		8BBF42F69E3F67F3DCBD4450 /* Pods_FancyClock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FancyClock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8D0678661EB3AE470014CFF9 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
-		8D0678681EB3B56E0014CFF9 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
-		8D24F38E1EA9EEA400EB478F /* FancyClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FancyClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D24F38E1EA9EEA400EB478F /* FancyClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = FancyClock.app; path = "/Users/javan/Desktop/FancyClock/build/Debug-iphoneos/FancyClock.app"; sourceTree = "<absolute>"; };
 		8D24F3911EA9EEA400EB478F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D24F3931EA9EEA400EB478F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8D24F3961EA9EEA400EB478F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -37,38 +29,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D28A2C85FD06BFEB89302971 /* Pods_FancyClock.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0A479B9230CE6B0E6AC433B0 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				2B75904CE886903735615EF9 /* Pods-FancyClock.debug.xcconfig */,
-				666DA1B3FC44D15001B20A4A /* Pods-FancyClock.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		8D24F3851EA9EEA400EB478F = {
 			isa = PBXGroup;
 			children = (
 				8D24F3901EA9EEA400EB478F /* FancyClock */,
-				8D24F38F1EA9EEA400EB478F /* Products */,
-				0A479B9230CE6B0E6AC433B0 /* Pods */,
-				E239BC14D219E80EA3FAA1EA /* Frameworks */,
 			);
-			sourceTree = "<group>";
-		};
-		8D24F38F1EA9EEA400EB478F /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				8D24F38E1EA9EEA400EB478F /* FancyClock.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		8D24F3901EA9EEA400EB478F /* FancyClock */ = {
@@ -76,22 +47,12 @@
 			children = (
 				8D24F3911EA9EEA400EB478F /* AppDelegate.swift */,
 				8D24F3931EA9EEA400EB478F /* ViewController.swift */,
-				8D0678661EB3AE470014CFF9 /* TableViewController.swift */,
-				8D0678681EB3B56E0014CFF9 /* TableViewCell.swift */,
 				8D24F3951EA9EEA400EB478F /* Main.storyboard */,
 				8D24F3981EA9EEA400EB478F /* Assets.xcassets */,
 				8D24F39A1EA9EEA400EB478F /* LaunchScreen.storyboard */,
 				8D24F39D1EA9EEA400EB478F /* Info.plist */,
 			);
 			path = FancyClock;
-			sourceTree = "<group>";
-		};
-		E239BC14D219E80EA3FAA1EA /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				8BBF42F69E3F67F3DCBD4450 /* Pods_FancyClock.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -101,12 +62,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8D24F3A01EA9EEA400EB478F /* Build configuration list for PBXNativeTarget "FancyClock" */;
 			buildPhases = (
-				A09D08CF5F41C7F81B4F107A /* [CP] Check Pods Manifest.lock */,
 				8D24F38A1EA9EEA400EB478F /* Sources */,
 				8D24F38B1EA9EEA400EB478F /* Frameworks */,
 				8D24F38C1EA9EEA400EB478F /* Resources */,
-				487EAAC658AD8AF29AA57B53 /* [CP] Embed Pods Frameworks */,
-				C75445CA09379D57B7568AAF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -143,7 +101,7 @@
 				Base,
 			);
 			mainGroup = 8D24F3851EA9EEA400EB478F;
-			productRefGroup = 8D24F38F1EA9EEA400EB478F /* Products */;
+			productRefGroup = 8D24F3851EA9EEA400EB478F;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -165,62 +123,12 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		487EAAC658AD8AF29AA57B53 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FancyClock/Pods-FancyClock-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A09D08CF5F41C7F81B4F107A /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		C75445CA09379D57B7568AAF /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FancyClock/Pods-FancyClock-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		8D24F38A1EA9EEA400EB478F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				8D24F3941EA9EEA400EB478F /* ViewController.swift in Sources */,
-				8D0678691EB3B56E0014CFF9 /* TableViewCell.swift in Sources */,
-				8D0678671EB3AE470014CFF9 /* TableViewController.swift in Sources */,
 				8D24F3921EA9EEA400EB478F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,7 +252,6 @@
 		};
 		8D24F3A11EA9EEA400EB478F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2B75904CE886903735615EF9 /* Pods-FancyClock.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Y26HK46CRV;
@@ -358,7 +265,6 @@
 		};
 		8D24F3A21EA9EEA400EB478F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 666DA1B3FC44D15001B20A4A /* Pods-FancyClock.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Y26HK46CRV;
