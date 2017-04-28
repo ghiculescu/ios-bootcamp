@@ -37,7 +37,7 @@ Usually developers will write a small library to wrap their networking code, sin
 
 Today we'll be interacting with unsplash.com -- a site that provides super high quality photos, donated by photographers. It's an excellent project, and it has amazing images.
 
-> Unsplash has a 50 calls per hour limit for anonymous developers, so Ethan has written a proxy for us here at the iOS bootcamp. If you're working on this at home, use unsplash's API directly after creating a free developer acount. Get started here: https://unsplash.com/documentation#getting-started.
+Unsplash has a 50 calls per hour limit for anonymous developers, so Ethan has written a proxy for us here at the iOS bootcamp. If you're working on this at home, use unsplash's API directly after creating a free developer acount. Get started here: https://unsplash.com/documentation#getting-started.
 
 To get a feel for what we're dealing with, we'll make a request and print out the contents.
 
@@ -56,19 +56,9 @@ PRO TIP: You'll get a `Data` object from the request. To convert this to a strin
 let string = String(data: data, encoding: .utf8)
 ```
 
-If you're stuck look below:
+<details>
+<summary><em>SOLUTION (SPOILERS)</em></summary><p>
 ```swift
-
-
-
-
-
-
-
-
-
-
-
 guard let url = URL(string: "insert-endpoint-here/photos/random") else { return }
 var urlRequest = URLRequest(url: url)
 urlRequest.addValue("Client-ID ANYTHING", forHTTPHeaderField: "Authorization")
@@ -80,9 +70,11 @@ return URLSession.shared.dataTask(with: urlRequest, completionHandler: { data, u
     print("Error: \(String(describing: error))")
 })
 ```
+</p></details>
 
-> GUARD...ELSE
->
+<details>
+<summary><em>GUARD...ELSE</em></summary><p>
+
 > Guard is best explained as the else statement only of an if statement. It came about because of if let ... {} pyramids of doom.
 >
 > NOTE: `if let constant ... {}` creates a constant only available to the inside of the if block.
@@ -108,10 +100,14 @@ guard let d = c... else { return }
 
 // Do something with d
 ```
+</p></details>
 
 ## Parsing the JSON
 
 Here's example JSON from `/photos/random`.
+
+<details>
+<summary><em>JSON</em></summary><p>
 ```json
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -193,6 +189,7 @@ Transfer-Encoding: chunked
     "width": 6000
 }
 ```
+</p></details>
 
 Foundation includes support for JSON parsing and serialization using `JSONSerialization`. The declaration is shown below:
 ```
@@ -212,8 +209,9 @@ do {
 }
 ```
 
-> Swift Dictionaries
->
+<details>
+<summary><em>DICTIONARIES IN SWIFT</em></summary><p>
+
 > `[String: AnyObject]` is a swift dictionary where the key is of type `String` and the value is of type `AnyObject`. A Dictionary is like map in java, or a dict in python. Dictionaries are one of three swift collection types in swift along with `Array` and `Set` (think set theory).
 >
 > To set an element in a dictionary:
@@ -230,11 +228,14 @@ let value = dictionary["key"] // value is of type Int?
 >
 > The manual for swift's collection types is here: https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/CollectionTypes.html, and the reference page for swift dictionaries is here: https://developer.apple.com/reference/swift/dictionary
 
+</p></details>
+
 Now we have processed the data out of the dictionary, let's extract the url for the regular image url. In _javascript_ this would be `json.urls.regular`.
 
 The JS in JSON stands for Javascript/JavaScript. The swift version _will_ be gross. You'll probably now wrestle with the compiler for 15 minutes to unpack the JSON.
 
-If you're stuck look below:
+<details>
+<summary><em>SOLUTION (SPOILERS)</em></summary><p>
 ```swift
 guard
     let dictionary = result as? [String: Any],
@@ -247,3 +248,4 @@ guard
 
 print(resourceAddress)
 ```
+</p></details>
