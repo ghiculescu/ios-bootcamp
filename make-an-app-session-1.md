@@ -101,7 +101,7 @@ This is the entry point to the app. `application(\_:didFinishLaunchingWithOption
 
 Let's chuck a `print("Hello")` in the body of `application(\_:didFinishLaunchingWithOptions:)`, then head back to `ViewController.swift` and add `print("World")` into the body of `viewDidLoad()`.
 
-```
+```swift
 /// AppDelegate.swift
 
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -111,7 +111,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 }
 ```
 
-```
+```swift
 /// ViewController.swift
 
 override func viewDidLoad() {
@@ -149,11 +149,11 @@ In this section, we learned how projects and apps are initiliased, saw some swif
 
 It's view time!
 
-On iOS, we put things onto the screen using views. Rendering happens in other ways, but none of that happens without using a view.
+In iOS programming, we put things onto the screen using **views**. Rendering happens in other ways, but none of that happens without using a view.
 
-Views are all subclasses of UIView. UIKit provides lots of system provided views (see https://developer.apple.com/library/content//documentation/UserExperience/Conceptual/UIKitUICatalog/index.html).
+Views are all subclasses of **UIView**. UIKit provides lots of system provided views (see https://developer.apple.com/library/content//documentation/UserExperience/Conceptual/UIKitUICatalog/index.html).
 
-The simplest for our purposes is a UILabel. Let's add one. Type `let label = UILabel(`. You should have a list of autocomplete suggestions. Swift allows initialiser overloading based off the parameter names. We'll use the `UILabel(frame:)` initialiser, but first, a little about coordinates.
+The simplest for our purposes is a **UILabel** - let's add one! Type `let label = UILabel(`. You should have a list of autocomplete suggestions. Swift allows initialiser overloading based off the parameter names. We'll use the `UILabel(frame:)` initialiser, but first, a little about coordinates.
 
 ## Coordinates
 The coordinate system on iOS uses the top-left as the origin (0, 0). The y-coordinate increases from top to bottom.
@@ -180,19 +180,19 @@ view.addSubview(label)
 
 ## Views and internationalisation
 
-iOS is a platform used by billions, from every country. The platform supports many languages. Thanks to this, and our friends in Japan, let's use emoji.
+iOS is a platform used by billions, from every country. The platform supports many languages. Thanks to this, and our friends in Japan, let's use Emoji!
 
-Type `label.text = "` then control-command-space to bring up the emoji picker. Select the "waving hand" emoji and a "globe" emoji, then close off the string.
+Type `label.text = "` then **Control+⌘+Space** to bring up the emoji picker. Select the "waving hand" emoji 👋 and a "globe" emoji 🌏 and then close off the string and run the project. You should see this:
 
-Run the project. You should see this:
+![Hello World](Screenshots/1-2-hello-world-unformatted.png)
 
-<img src="https://github.com/redeyeapps/ios-bootcamp/raw/master/images/make-an-app-session-1/hello-world-unformatted.png" width="360">
+It doesn't look quite right. Hit the button that looks like a portrait rectangle on top of a landscape rectangle, to the left of the step-out button in the debug control area. Was that a horribly confusing description? Maybe an image will help:
 
-It doesn't look quite right. Hit the button that looks like a portrait rectangle on top of a landscape rectangle, to the left of the step-out button in the debug control area.
+![The box on the widget of the control area to the rectangle of the widget app](Screenshots/1-2-debug-view.png)
 
-This is the view debugger. Drag down and right from the center of the view. This will reveal the view hierarchy in 3d. The slider on the left controls the depth effect.
+This is the view debugger. Drag down and right from the center of the view. This will reveal the view hierarchy in 3D. The slider on the left controls the depth effect.
 
-We can see the window at the back, then `ViewController.view` in the middle and finally our label at the front. We can see that the bounds of the view are okay –- they match the bounds of the view controller view (fullscreen). Let's move the content into the center of the label using UILabel's `textAlignment` property.
+We can see the window at the back, then `ViewController.view` in the middle and finally our label at the front. We can see that the bounds of the view are okay –- they match the bounds of the View Controller view (fullscreen). Let's move the content into the center of the label using UILabel's `textAlignment` property.
 
 While we're at it, let's alter the font to make it bigger too. Update your view code to match what's below and run the project.
 
@@ -206,9 +206,9 @@ view.addSubview(label)
 
 You should see this:
 
-<img src="https://github.com/redeyeapps/ios-bootcamp/raw/master/images/make-an-app-session-1/hello-world-formatted.png" width="360">
+![Hello World](Screenshots/1-2-hello-world-formatted.png)
 
-Minimalist design and overuse of emoji on a shiny (simulated) device? We're proper iOS developers now.
+Minimalist design and overuse of emoji on a shiny (simulated) device? We're proper iOS developers now 🏅
 
 <details>
 <summary><em>SWIFT IN ACTION</em></summary><p>
@@ -225,31 +225,38 @@ In this section, we learned about views, coordinates and windows on iOS. We used
 
 # 1.3 Tick (Displaying times and dates, using timers)
 
-Now we have a view, but it's not really doing anything. Easy to fix. Let's add a `Timer` and display a date which updates every second instead of some emoji. We're programmers. Emoji is for messaging apps, not building technical wonders.
+Now we have a view, but it's not really doing anything. Easy to fix. Let's add a `Timer` and display a date which updates every second instead of some emoji. We're programmers. Emoji is for messaging apps 😂, not building technical wonders 🤔
 
 ## Times and dates
 
-On iOS dates are simply represented as a TimeInterval (a typealias for Double), measured in seconds wrapped up in a type called Date.
+On iOS dates are simply represented as a **TimeInterval** (a typealias for Double), measured in seconds wrapped up in a type called **Date**.
 
-To get the current date, just call `Date()`. See https://developer.apple.com/reference/foundation/nsdate for more.
 
-To do arithmetic on dates using months or days etc, we have to use a Calendar (https://developer.apple.com/reference/foundation/calendar). Dates are hard.
+To get the current date, just call `Date()`. See here for more:
+[https://developer.apple.com/reference/foundation/nsdate](https://developer.apple.com/reference/foundation/nsdate)
+
+To do arithmetic on dates using months or days etc, we have to use a [Calendar](https://developer.apple.com/reference/foundation/calendar). Dates are hard.
 
 ## Displaying times and dates
 
 As we said before, iOS is used all around the world. That means catering for a ridiculous number of different conventions.
 
-iOS addresses this problem using Formatters which take into consideration the user's curent settings. The NSHipster blog gives a quick tour of this at http://nshipster.com/nsformatter/. NSHipster is a good resource for a lot of other things too.
+iOS addresses this problem using Formatters which take into consideration the user's current settings. The NSHipster blog gives a quick tour of this [right here](http://nshipster.com/nsformatter/). NSHipster is a good resource for a lot of other things too!
 
 We'll use a DateFormatter to format out date.
 
-> Dates and DateFormatters are part of Foundation: the library for basic tasks that aren't part of the swift standard library. Foundation helps with working with Data, Calendars, JSON, URLs etc. Foundation along with UIKit, and apple's other libraries are known as 'Cocoa'.
+> Dates and DateFormatters are part of Foundation: the library for basic tasks that aren't part of the Swift standard library. Foundation helps with working with Data, Calendars, JSON, URLs etc. Foundation along with UIKit, and apple's other libraries are known as 'Cocoa'.
 
 DateFormatters use a `Locale` to represent conventions for displaying times, dates, numbers, etc., a `Timezone` to represent the current timezone, and a Date and Time style to specify how a date or time should be rendered.
 
 DateFormatters are created with the default `Locale` and `Timezone` based on the user.
 
-Let's format a date! See https://developer.apple.com/reference/foundation/dateformatter for usage, and https://developer.apple.com/reference/foundation/dateformatter.style for display types. You'll have to click on one of the cases to see what they actually look like. The online docs are pretty annoying sometimes.
+Let's format a date! See these links for usage and display types:
+
+[https://developer.apple.com/reference/foundation/dateformatter](https://developer.apple.com/reference/foundation/dateformatter)
+[https://developer.apple.com/reference/foundation/dateformatter.style](https://developer.apple.com/reference/foundation/dateformatter.style) 
+
+You'll have to click on one of the cases to see what they actually look like. The online docs are pretty annoying sometimes.
 
 The code below uses the medium style, without setting a date style so the date isn't displayed (it's default is none). The font size adjusted to ~50 so the time won't be truncated.
 
@@ -279,6 +286,7 @@ Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
 The timer method uses a closure to pass in an anonymous function which can reference the parent scope when called.
 
 Let's cache the dateFormatter (because it turns out they're expensive to create) and update the text label in the timer:
+
 ```swift
 class ViewController: UIViewController {
 
@@ -347,7 +355,7 @@ Add two Label objects (UILabels) by dragging them out of the Object Library and 
 
 Position the views so that one view is higher than the other. It should look something like this:
 
-<img src="https://github.com/redeyeapps/ios-bootcamp/raw/master/images/make-an-app-session-1/label-placement.png" width="360">
+<img src="https://github.com/redeyeapps/ios-bootcamp/raw/master/Screenshots/label-placement.png" width="360">
 
 ## Autolayout
 
@@ -483,9 +491,8 @@ Let's style the labels we had before. Click the slider icon in the top half of t
 
 Now add a dateFormatter with a date style to update the dateLabel. Boom! Time and date in both orientations.
 
-<img src="https://github.com/redeyeapps/ios-bootcamp/raw/master/images/make-an-app-session-1/time-and-date-portrait.png" width="360">
-
-<img src="https://github.com/redeyeapps/ios-bootcamp/raw/master/images/make-an-app-session-1/time-and-date-landscape.png" width="360">
+![iPhone Portrait](Screenshots/1-4-time-and-date-portrait.png)
+![iPhone Landscape](Screenshots/1-4-time-and-date-landscape.png)
 
 ## Summary
 
