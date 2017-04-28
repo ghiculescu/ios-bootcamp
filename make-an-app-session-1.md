@@ -62,7 +62,7 @@ This is an empty UIViewController subclass, and your first look at swift code!
 
 What we're seeing here is a class, one of swift's fundamental types, that inherits from UIViewController. (Swift also has Structs, Enums, and Closures. We'll see these guys layer.) The ViewController has two method stubs.
 
-Hold down cmd and click on 'UIViewController' in the source code.
+Hold down cmd and click on `UIViewController` in the source code.
 
 You're now in the UIViewController header file! As you can see, there's a lot going on here. `UIViewController` handles _view lifecycle_ callbacks -- when a view controller's view will or did load / appear / disappear (`viewDidLoad()`), handles memory warnings (`didReceiveMemoryWarning()`), and coordinates navigation. Notice the `view` property. We'll come back that later.
 
@@ -117,7 +117,10 @@ The primitives that are used to represent locations and sizes are `CGPoint`, `CG
 
 Views have a frame and bounds. Both of these are CGRects. _Bounds_ are effected by transforms, but the _frame_ isn't. We'll use bounds to reference an existing object's location and size, and frames to create them.
 
-Finish that line by referencing view (which we'll explain very soon): `let label = UILabel(frame: CGRect(x: 0, y: 0, width: view.bounds.width, view.bounds.height))`
+Finish that line by referencing `view` (which we'll explain very soon):
+```swift
+let label = UILabel(frame: CGRect(x: 0, y: 0, width: view.bounds.width, view.bounds.height))
+```
 
 ## Windows
 
@@ -125,7 +128,10 @@ A `UIViewController` subclass's main job is to manage it's view. The view is mad
 
 That view will already have reference to a `UIWindow` which means its contents will be rendered. We can add a view to the hierachy by adding a subview.
 
-Add `view.addSubview(label)` to add our label to the view hierachy.
+Add the following to add our label to the view hierachy:
+```swift
+view.addSubview(label)
+```
 
 ## Views and internationalisation
 
@@ -133,7 +139,9 @@ iOS is a platform used by billions, from every country. The platform supports ma
 
 Type `label.text = "` then control-command-space to bring up the emoji picker. Select the "waving hand" emoji and a "globe" emoji, then close off the string.
 
-Run the project. You should see this:**hello-world-unformatted**
+Run the project. You should see this:
+
+![Hello world unformatted](https://github.com/redeyeapps/ios-bootcamp/images/hello-world-unformatted.png)
 
 It doesn't look quite right. Hit the button that looks like a portrait rectangle on top of a landscape rectangle, to the left of the step-out button in the debug control area.
 
@@ -143,7 +151,7 @@ We can see the window at the back, then `ViewController.view` in the middle and 
 
 While we're at it, let's alter the font to make it bigger too. Update your view code to match what's below and run the project.
 
-```
+```swift
 let label = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: view.bounds.width, height: view.bounds.height))
 label.text = "👋🌏"
 label.font = UIFont.systemFont(ofSize: 100.0)
@@ -152,7 +160,8 @@ view.addSubview(label)
 ```
 
 You should see this:
-**hello-world-formatted**
+
+![Hello world formatted](https://github.com/redeyeapps/ios-bootcamp/images/hello-world-formatted.png)
 
 Minimalist design and overuse of emoji on a shiny (simulated) device? We're proper iOS developers now.
 
@@ -197,7 +206,7 @@ Let's format a date! See https://developer.apple.com/reference/foundation/datefo
 
 The code below uses the medium style, without setting a date style so the date isn't displayed (it's default is none). The font size adjusted to ~50 so the time won't be truncated.
 
-```
+```swift
 let date = Date()
 let dateFormatter = DateFormatter()
 dateFormatter.timeStyle = .medium
@@ -214,7 +223,7 @@ Run the project and you'll probably stare at it for a while waiting for it to ch
 
 To make things dynamic we'll use a timer. Timers are very easy on iOS 10 and later:
 
-```
+```swift
 Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
     // Do stuff with the timer
 }
@@ -223,7 +232,7 @@ Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
 The timer method uses a closure to pass in an anonymous function which can reference the parent scope when called.
 
 Let's cache the dateFormatter (because it turns out they're expensive to create) and update the text label in the timer:
-```
+```swift
 class ViewController: UIViewController {
 
     var dateFormatter = DateFormatter()
@@ -255,13 +264,13 @@ Run it, and we're looking good!
 
 > CLOSURES IN-DEPTH
 The method signature for the timer looks like this:
-```
+```swift
 open class func scheduledTimer(withTimeInterval interval: TimeInterval, repeats: Bool, block: @escaping (Timer) -> Swift.Void) -> Timer
 ```
 The closure taken buy this function is the final argument. When using the function, the brackets can be put before the second to last parameter and statement can look more native. It's entirely syntactic sugar.
 
 > The important bit is the `@escaping`. It means that what is passed into the function will be stored and executed later. This is in contrast to a non-escaping closure (where `@escaping` is omitted), where the content of the closure is executed before the function executes. Using an instance variable in a closure causes a compiler error where self has to be referenced. This is because to access self, self must be captured. When and object references a closure (the child) and the closure references self (the parent) a reference cycle has been declared and the parent object's memory will be leaked. This is all to do with how swift does memory management. It uses Automatic Reference Counting so manual memory management isn't required, but the overhead of a garbage collector isn't required either. The solution the reference cycle is to hint that the compiler should capture self weakly:
-```
+```swift
 Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] timer in
     self?. ...
 }
@@ -288,7 +297,7 @@ Add two Label objects (UILabels) by dragging them out of the Object Library and 
 
 Position the views so that one view is higher than the other. It should look something like this:
 
-**label-placement.png**
+![Label placement](https://github.com/redeyeapps/ios-bootcamp/images/label-placement.png)
 
 ## Autolayout
 
@@ -316,7 +325,7 @@ Right now our views are static. Let's make them dynamic.
 
 iOS uses `@IBOutlet` to declare that a view is related to a view existing in a storyboard. Let's declare properties for our views. Add the following before `dateFormatter` in `ViewController.swift`:
 
-```
+```swift
 @IBOutlet weak var timeLabel: UILabel!
 @IBOutlet weak var dateLabel: UILabel!
 ```
@@ -324,7 +333,7 @@ iOS uses `@IBOutlet` to declare that a view is related to a view existing in a s
 ### BANG BANG! (A long aside on optionals, tutorial continued afterwards)
 
 Remember how we said before that 'safe' was one of the goals of the Swift language project? A big part of that is if a type can be `nil` it must be declared that way. Swift uses Optionals to represent this. Optionals wrap a type making two cases: the value doesn't exist, or it does exist and has a given value. They can be written as an `enum` like below:
-```
+```swift
 enum Optional<Type> {
     case none
     case some(let value: Type)
@@ -332,7 +341,7 @@ enum Optional<Type> {
 ```
 Usually to use an enum we have to use switch statements (or case statements in other places). The following shows this:
 
-```
+```swift
 let optionalTwenty = Optional<Int>.some(value: 20)
 let optionalNothing = Optional<Int>.none
 
@@ -352,7 +361,7 @@ print(valueExists(forOptional: optionalNone))    // "I don't exist"
 
 Since it would be excruciating to have to have switch statements, swift adds some syntactic sugar to optionals. In code, they play out as follows:
 
-```
+```swift
 func doSomethingWithNonOptional(_ nonOptional: String) {}
 func doSomethingWithOptional(_ optional: String?) {}    // Notice the '?'
 
@@ -424,7 +433,9 @@ Let's style the labels we had before. Click the slider icon in the top half of t
 
 Now add a dateFormatter with a date style to update the dateLabel. Boom! Time and date in both orientations.
 
-**Time and date imagse.**
+![Time and date portrait](https://github.com/redeyeapps/ios-bootcamp/images/time-and-date-portrait.png)
+
+![Time and date landscape](https://github.com/redeyeapps/ios-bootcamp/images/time-and-date-landscape.png)
 
 ## Summary
 
