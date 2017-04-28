@@ -72,35 +72,36 @@ return URLSession.shared.dataTask(with: urlRequest, completionHandler: { data, u
 })
 ```
 </p></details>
-
+<br>
 <details>
 <summary><em>GUARD...ELSE</em></summary><p>
 
-> Guard is best explained as the else statement only of an if statement. It came about because of if let ... {} pyramids of doom.
+>Guard is best explained as the else statement only of an if statement. It came about because of if let ... {} pyramids of doom.
 >
-> NOTE: `if let constant ... {}` creates a constant only available to the inside of the if block.
+>NOTE: `if let constant ... {}` creates a constant only available to the inside of the if block.
 >
-> They looked like this:
-> ```swift
-if let a = ... {
-    if let b = a... {
-        if let c = b... {
-            if let d = c... {
-                // Do something with d
-            }
-        }
-    }
-}
-```
-> The solution was to add an equivalent statement which included the failure case
-> ```swift
-guard let a = ... else { return }
-guard let b = a... else { return }
-guard let c = b... else { return }
-guard let d = c... else { return }
-
-// Do something with d
-```
+>They looked like this:
+>```swift
+>if let a = ... {
+>    if let b = a... {
+>        if let c = b... {
+>            if let d = c... {
+>                // Do something with d
+>            }
+>        }
+>    }
+>}
+>```
+>
+>The solution was to add an equivalent statement which included the failure case
+>```swift
+>guard let a = ... else { return }
+>guard let b = a... else { return }
+>guard let c = b... else { return }
+>guard let d = c... else { return }
+>
+>// Do something with d
+>```
 </p></details>
 
 ## Parsing the JSON
@@ -109,6 +110,7 @@ Here's example JSON from `/photos/random`.
 
 <details>
 <summary><em>JSON</em></summary><p>
+
 ```json
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -191,6 +193,7 @@ Transfer-Encoding: chunked
 }
 ```
 </p></details>
+<br>
 
 Foundation includes support for JSON parsing and serialization using `JSONSerialization`. The declaration is shown below:
 ```
@@ -217,26 +220,27 @@ do {
 >
 > To set an element in a dictionary:
 > ```swift
-var dictionary: [String: Int]
-dictionary["key"] = 42
-```
+>var dictionary: [String: Int]
+>dictionary["key"] = 42
+>```
 >
 > And to access that element:
 > ```swift
-let value = dictionary["key"] // value is of type Int?
-```
+>let value = dictionary["key"] // value is of type Int?
+>```
 > Note that the return type of the call is optional. If the value doesn't exist the result of the subscript is `nil`. This is unlike and `Array` where subscripting out of bounds is an error. In array's case, this is a performance consideration. Dictionaries are much less performant than arrays.
 >
 > The manual for swift's collection types is here: https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/CollectionTypes.html, and the reference page for swift dictionaries is here: https://developer.apple.com/reference/swift/dictionary
 
 </p></details>
-
+<br>
 Now we have processed the data out of the dictionary, let's extract the url for the regular image url. In _javascript_ this would be `json.urls.regular`.
 
 The JS in JSON stands for Javascript/JavaScript. The swift version _will_ be gross. You'll probably now wrestle with the compiler for 15 minutes to unpack the JSON.
 
 <details>
 <summary><em>SOLUTION (SPOILERS)</em></summary><p>
+
 ```swift
 guard
     let dictionary = result as? [String: Any],
