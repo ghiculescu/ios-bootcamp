@@ -2,7 +2,7 @@
 
 # 1.1 Hello world (Getting started)
 
-In this section we're going to:
+In this section you're going to:
 
 * Create an Xcode Project
 * Understand the Xcode interface
