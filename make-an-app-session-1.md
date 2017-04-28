@@ -1,14 +1,4 @@
-
-# Session 1
-
-Swift crash course (group session)
-
-API Uses:
-- `DateFormatter`
-- `Timer`
-- `UIKit`
-- `IB`
-- `Closures` (Extra info section for leaks)
+# SESSION 1
 
 # 1.1 Hello world (Getting started)
 
@@ -32,7 +22,7 @@ Use the following for the project details and uncheck:
 * Include UI Tests
 
 It will look a little like this:
- 
+
 ```
 Product Name: FancyClock
 Team: <Your Name> (Personal Team)
@@ -72,10 +62,11 @@ Hit **⌘+1** to go to the **Project Navigator** and click on ViewController.swi
 >
 > Later further reading on the philosophy of the language: https://swift.org/about/, https://swift.org/community
 </p></details>
+<br>
 
 What we're seeing here is a class, one of Swift's fundamental types, that inherits from `UIViewController` and has two method stubs. Swift also has Structs, Enums, and Closures - we'll see these guys later!
 
-Hold down **Command(⌘)** and click on `UIViewController` in the source code, which will take you to the UIViewController header file! As you can see, there's a lot going on here. 
+Hold down **Command(⌘)** and click on `UIViewController` in the source code, which will take you to the UIViewController header file! As you can see, there's a lot going on here.
 
 `UIViewController` handles **view lifecycle** callbacks such as:
 
@@ -94,6 +85,7 @@ Weirdly there's no Swift function bodies in here. That's because all of Apple's 
 >
 >Later recommended reading: https://swift.org/contributing/, https://apple.github.io/swift-evolution/
 </p></details>
+<br>
 
 Hit `Command(⌘)+Shift+o` to open Xcode's 'Open Quickly' menu and search for `AppDelegate.swift`. **Protip:** You will be able to find **A**pp**D**elegate.**s**wift by simply typing `AD.s`
 
@@ -305,7 +297,7 @@ class ViewController: UIViewController {
         label.textAlignment = .center
         view.addSubview(label)
 
-        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [weak self] _ in
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
             label.text = self?.dateFormatter.string(from: Date())
         }
     }
