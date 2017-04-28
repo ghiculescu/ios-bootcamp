@@ -53,11 +53,11 @@ Click on ViewController.swift
 This is an empty UIViewController subclass, and your first look at swift code!
 
 > THE SWIFT PROJECT
-
+>
 > Swift is a language designed to be "...a general-purpose programming language built using a modern approach to safety, performance, and software design patterns." Swift is a compiled language, and the project uses the LLVM compiler to produce machine-code so theoretically, binaries written in Swift can be run on embedded systems all the way up to server-side infrastructure.
-
+>
 > The project also includes development on the LLVM compiler, package manager, and the creation of core libraries to support swift on platforms not managed by Apple, including server-focussed capabilities.
-
+>
 > Later further reading on the philosophy of the language: https://swift.org/about/, https://swift.org/community
 
 What we're seeing here is a class, one of swift's fundamental types, that inherits from UIViewController. (Swift also has Structs, Enums, and Closures. We'll see these guys layer.) The ViewController has two method stubs.
@@ -69,9 +69,9 @@ You're now in the UIViewController header file! As you can see, there's a lot go
 Weirdly there's no swift function bodies in here. That's because all apple's frameworks are still written in Objective-C and swift plays nicely with them.
 
 > HISTORY LESSON
-
+>
 > Objective-C was initially developed at NeXT for their NeXTSTEP operating system. NeXT was acquired by apple and NeXTSTEP became OSX, which has morphed into macOS, iOS, tvOS and watchOS. Objective-C is quite a dated language, and the Swift project is an attempt to bring updated practise into the language. To support swift's development, __swift has the capabilities to interact with every part of the objective-c runtime__. Swift indeed developed very quickly and three years later, swift is approaching Application Binary Interface (ABI) stability, which means that large frameworks can be developed without having to be maintained during every swift update (🎉), and UIKit can finally benefit from Swift's shiny new language features.
-
+>
 > Later recommended reading: https://swift.org/contributing/, https://apple.github.io/swift-evolution/
 
 Hit cmd-shift-o and type 'AD.s'. This should bring up AppDelegate.swift using the 'Open Quickly' menu.
